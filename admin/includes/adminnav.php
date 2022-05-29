@@ -79,7 +79,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "superadmin" && $_SESSION['area']=="Comunicaciones" ) {
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Comunicaciones" ) {
             echo ' 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -106,7 +106,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "superadmin" && $_SESSION['area']=="PQRSD" ) {
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="PQRSD" ) {
             echo '
             <!-- Divider -->
             <hr class="sidebar-divider">
