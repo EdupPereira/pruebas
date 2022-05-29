@@ -106,7 +106,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="PQRSD" ) {
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="PQRSFD" ) {
             echo '
             <!-- Divider -->
             <hr class="sidebar-divider">
