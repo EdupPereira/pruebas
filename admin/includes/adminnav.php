@@ -126,7 +126,7 @@
             <div id="pqrsfd" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrar:</h6>
-            <a class="collapse-item" href="verpqrsd.php">PQRSDF</a>
+            <a class="collapse-item" href="verpqrsd.php">PQRSFD</a>
             </div>
             </div>
             </li>
