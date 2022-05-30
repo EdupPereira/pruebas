@@ -634,7 +634,7 @@ aria-hidden="true">
         <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
         <div class="modal-footer">
             <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="../logout.php">Cerrar</a>
+            <a class="btn btn-primary" href="../logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Cerrar</a>
         </div>
     </div>
 </div>

@@ -24,7 +24,8 @@ $(document).ready(function(){
 			className:'btn btn-danger'	
 		},
 
-		]
+		],
+		"order": [[ 0, 'desc' ]]
 	});
 
 	$("#tabla_post").DataTable({
@@ -47,7 +48,8 @@ $(document).ready(function(){
 			className:'btn btn-danger'	
 		},
 
-		]
+		],
+		"order": [[ 0, 'desc' ]]
 	});
 
 });

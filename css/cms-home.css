@@ -103,7 +103,7 @@ a{
 
 .btn-flotante{
     position: fixed;
-    top: 230px;
+    top: 150px;
     right: 0px;
     transition: all 300ms ease 0ms;
     z-index: 50;
@@ -162,7 +162,7 @@ a{
 .btn-fab {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 40px;
   text-align: right;
   z-index: 3;
 }

@@ -68,9 +68,9 @@
 
 <div class="btn-fab">
   <nav class="fab-menu">
-    <a href="transparencia.php"></a><button class="fab-menu__item">Transparencia</button>
-    <a href="pqrsfd.php"></a><button class="fab-menu__item">PQRSDF</button>
-    <a href="noticias.php"></a><button class="fab-menu__item">Noticias</button>
+    <a href="transparencia.php"><button class="fab-menu__item">Transparencia</button></a>
+    <a href="pqrsfd.php"><button class="fab-menu__item">PQRSFD</button></a>
+    <a href="noticias.php"><button class="fab-menu__item">Noticias</button></a>
   </nav>
   <button class="btn-fab__action" id="fab">
     <i class="bi bi-chat-square-text"></i>
