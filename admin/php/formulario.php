@@ -205,6 +205,7 @@ if (pg_num_rows($run_query) > 0) {
 			<div class="modal-body">
 				<form  action="" method="post" enctype="multipart/form-data" >
 					<div class="form-row">
+						<h4 class="text-center"><B>Antes de Guardar verifique la Subcategoria</B></h4>
 						<input type="hidden" class="form-control" name="cod_archivo" id="cod_archivo" readonly>
 						<input type="text" class="form-control" name="indice_subcat" id="indice_subcat" readonly>
 						<div class="form-group col-md-6">
@@ -253,7 +254,7 @@ if (pg_num_rows($run_query) > 0) {
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-						<button type="submit" class="btn btn-success" name="editar_archivo">Editar</button>
+						<button type="submit" class="btn btn-success" name="editar_archivo">Guardar</button>
 					</div>
 				</form>
 			</div>

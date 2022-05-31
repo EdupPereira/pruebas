@@ -202,6 +202,7 @@ if(isset($_POST['elimina_archivo'])) {
 			<div class="modal-body">
 				<form  action="" method="post" enctype="multipart/form-data" >
 					<div class="form-row">
+						<h4 class="text-center"><B>Antes de Guardar verifique la Subcategoria</B></h4>
 						<input type="hidden" class="form-control" name="cod_archivo" id="cod_archivo" readonly>
 						<input type="text" class="form-control" name="indice_subcat" id="indice_subcat" readonly>
 						<div class="form-group col-md-6">
@@ -238,7 +239,7 @@ if(isset($_POST['elimina_archivo'])) {
 								?>
 							</select>
 						</div>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-12">
 							<label for="inputEmail4">Archivo</label>
 							<input class="form-control" type="file" name="archivo" id="archivo">
 						</div>
@@ -250,7 +251,7 @@ if(isset($_POST['elimina_archivo'])) {
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-						<button type="submit" class="btn btn-success" name="editar_archivo">Editar</button>
+						<button type="submit" class="btn btn-success" name="editar_archivo">Guardar</button>
 					</div>
 				</form>
 			</div>
