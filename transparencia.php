@@ -38,6 +38,7 @@
 				} ?>
 
 			</div> <!-- CERRAR ACORDEON DE LAS CATEGORIAS -->
+		<!-- 	SESION DE LAS SUBCATEGORIAS -->
 			<div class="col-md-2  tab-content card"  id="v-pills-tabContent">
 				<center><B>Subcategorias</B></center>
 				<?php
@@ -64,16 +65,59 @@
 									while ($sub = pg_fetch_array($run_query_sub)) { 
 										$codigo_categoriat_fk=$sub['codigo_categoriat_fk'];	
 										$indice_subcat=$sub["indice_subcat"];
-										$codigo_subcat=$sub["codigo_subcat"]; ?>
-
-										<button class="nav-link px-4" id="v-pills-n<?php echo $codigo_subcat; ?>-tab" data-bs-toggle="pill" data-bs-target="#v-pills-n<?php echo $codigo_subcat; ?>" type="button" role="tab" aria-controls="v-pills-n<?php echo $codigo_subcat; ?>" aria-selected="false"><?php echo $indice_subcat."-". $sub["descripcion_subcat"]; ?></button>
-										<?php
-
+										$codigo_subcat=$sub["codigo_subcat"]; 
+										//ESTE SWICHT SIRVE PARA NO MOSTRAR SUCATEGORIAS EN LA LEY DE TRANSPATENCIA COMO POR EJEMPLO 6.1.2 - 6.1.1 - 6.1.3 - 6.1.4 - 6.1.5 - 6.1.6 - 6.1.7 - 6.1.8 - 6.1.9 - 6.1.10 - 6.1.11 - 6.1.12 - 6.1.13 - 6.1.14 - 6.1.15 - 6.1.16 - 6.1.17 Y LUEGO ADJUNTARLAS EN LA SUBCATEGORIA PRINCIPAL 6.1 ESTO SE REALIZA CON EL CODIGO DE LA SUBCATEGORIA Y SOLO SE PONE QUE EN EL CASO DE QUE EL CODIGO COINCIDA MUESTRE VACIO Y POR DEFECTO SE MOSTRARA EL BOTON DE LA SUBCATEGORIA ESTO QUIERE DECIR QUE SI LA SUBCATEGORIA NO CORRESPONDE A NINGUN DATO VACIO DEL SWITCH ENTONCES MUSTRE EL DEFAULT 
+										switch ($codigo_subcat) {
+											case 62:
+											break;
+											case 63:
+											break;
+											case 65:
+											break;
+											case 66:
+											break;
+											case 67:
+											break;
+											case 68:
+											break;
+											case 69:
+											break;
+											case 70:
+											break;
+											case 71:
+											break;
+											case 73:
+											break;
+											case 74:
+											break;
+											case 75:
+											break;
+											case 76:
+											break;
+											case 77:
+											break;
+											case 78:
+											break;
+											case 79:
+											break;
+											case 80:
+											break;
+											case 81:
+											break;
+											case 82:
+											break;
+											case 83:
+											break;
+											default; ?>
+											<button class="nav-link px-4" id="v-pills-n<?php echo $codigo_subcat; ?>-tab" data-bs-toggle="pill" data-bs-target="#v-pills-n<?php echo $codigo_subcat; ?>" type="button" role="tab" aria-controls="v-pills-n<?php echo $codigo_subcat; ?>" aria-selected="false"><?php echo $indice_subcat."-". $sub["descripcion_subcat"]; ?></button>
+											<?php
+										}
 
 									}
 
 								}
-								echo"	</div>
+								echo"	
+								</div>
 								</div>";
 
 							} 
@@ -321,6 +365,452 @@
 										</div>
 
 										</div>';
+										break;
+										//PUNTO 4.2 Sujetos obligados del orden territorial-Resoluciones AGRUPACION DE NORMOGRAMA, RESOLUCIONES DE GERENCIA Y ACUERDOS DE JUNTA DIRECTIVA
+										case 24:
+										echo'
+										<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+										<h2 class="accordion-header" id="headingThree">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+										Normograma
+										</button>
+										</h2>
+										<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+										';
+										$codigo='69';
+										include ('php/consulta_archivo.php'); 
+										echo'
+										</div>
+										</div>
+										</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+										<h2 class="accordion-header" id="resolucion">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapser" aria-expanded="false" aria-controls="collapser">
+										Resoluciones de Gerencia
+										</button>
+										</h2>
+										<div id="collapser" class="accordion-collapse collapse" aria-labelledby="resolucion" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+										';
+										$codigo='24';
+										include ('php/estados_financieros.php'); 
+										echo'
+										</div>
+										</div>
+										</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+										<h2 class="accordion-header" id="acuerdos">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapacu" aria-expanded="false" aria-controls="collapacu">
+										Acuerdos de Junta Directiva
+										</button>
+										</h2>
+										<div id="collapacu" class="accordion-collapse collapse" aria-labelledby="acuerdos" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+										';
+										$codigo='70';
+										include ('php/estados_financieros.php'); 
+										echo'
+										</div>
+										</div>
+										</div>
+
+										</div>
+										';
+										break;
+										//PUNTO 6.1 AGRUPACION DE POLITICAS Y MANUALES
+										case 29:
+										echo '	<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+										<h2 class="accordion-header" id="politicas">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapoliti" aria-expanded="false" aria-controls="collapoliti">
+										Políticas
+										</button>
+										</h2>
+										<div id="collapoliti" class="accordion-collapse collapse" aria-labelledby="politicas" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+										';
+										$codigo="29";
+										include ("php/estados_financieros.php"); 
+										echo'
+										</div>
+										</div>
+										</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+										<h2 class="accordion-header" id="manuales">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collamanuales" aria-expanded="false" aria-controls="collamanuales">
+										Manuales
+										</button>
+										</h2>
+										<div id="collamanuales" class="accordion-collapse collapse" aria-labelledby="manuales" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+										';
+										$codigo='63';
+										include ('php/estados_financieros.php'); 
+										echo'
+										</div>
+										</div>
+										</div>
+
+										</div>';
+										break;
+										//PUNTO 6.2 Plan de acción
+										case 30: ?>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="planaccion">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collaplanaccion" aria-expanded="false" aria-controls="collaplanaccion">
+														Plan de acción
+													</button>
+												</h2>
+												<div id="collaplanaccion" class="accordion-collapse collapse" aria-labelledby="planaccion" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='30';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="estrategicos">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapestra" aria-expanded="false" aria-controls="collapestra">
+														Plan Estrategico
+													</button>
+												</h2>
+												<div id="collapestra" class="accordion-collapse collapse" aria-labelledby="estrategicos" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='62';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="pnegocios">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapnegocios" aria-expanded="false" aria-controls="collapnegocios">
+														Plan de Negocios
+													</button>
+												</h2>
+												<div id="collapnegocios" class="accordion-collapse collapse" aria-labelledby="pnegocios" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='81';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="rendicion">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collaprendicion" aria-expanded="false" aria-controls="collaprendicion">
+														Estretagia de Rendición de Cuentas
+													</button>
+												</h2>
+												<div id="collaprendicion" class="accordion-collapse collapse" aria-labelledby="rendicion" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='65';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="antitramites">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapanti" aria-expanded="false" aria-controls="collapanti">
+														Plan Antitramites
+													</button>
+												</h2>
+												<div id="collapanti" class="accordion-collapse collapse" aria-labelledby="antitramites" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<p>Los ciudadanos no realizan ningún tramite en la entidad.</p>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="corrupcion">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapanticorrupcion" aria-expanded="false" aria-controls="collapanticorrupcion">
+														Plan Anticorrupción y Atención al Ciudadano 
+													</button>
+												</h2>
+												<div id="collapanticorrupcion" class="accordion-collapse collapse" aria-labelledby="corrupcion" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='68';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="pinar">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collappinar" aria-expanded="false" aria-controls="collappinar">
+														Plan Institucional de Archivo PINAR
+													</button>
+												</h2>
+												<div id="collappinar" class="accordion-collapse collapse" aria-labelledby="pinar" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='74';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="talento">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collaptalento" aria-expanded="false" aria-controls="collaptalento">
+														Plan Estratégico de Talento Humano
+													</button>
+												</h2>
+												<div id="collaptalento" class="accordion-collapse collapse" aria-labelledby="talento" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='75';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="vacantes">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapvacantes" aria-expanded="false" aria-controls="collapvacantes">
+														Plan Anual de Vacantes
+													</button>
+												</h2>
+												<div id="collapvacantes" class="accordion-collapse collapse" aria-labelledby="vacantes" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='73';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="humano">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collaphumano" aria-expanded="false" aria-controls="collaphumano">
+														Plan de Previsión Recursos Humanos
+													</button>
+												</h2>
+												<div id="collaphumano" class="accordion-collapse collapse" aria-labelledby="humano" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='76';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="capacitacion">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapcapa" aria-expanded="false" aria-controls="collapcapa">
+														Plan Institucional de Capacitación 
+													</button>
+												</h2>
+												<div id="collapcapa" class="accordion-collapse collapse" aria-labelledby="capacitacion" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='77';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="incentivos">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapincantivos" aria-expanded="false" aria-controls="collapincantivos">
+														Plan de Bienestar Laboral e Incentivos
+													</button>
+												</h2>
+												<div id="collapincantivos" class="accordion-collapse collapse" aria-labelledby="incentivos" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='78';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="seguridad">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseguridad" aria-expanded="false" aria-controls="collapseguridad">
+														Plan Anual Seguridad y Salud en el Trabajo
+													</button>
+												</h2>
+												<div id="collapseguridad" class="accordion-collapse collapse" aria-labelledby="seguridad" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='79';
+														include ('php/consulta_archivo.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="riesgos">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapriesgos" aria-expanded="false" aria-controls="collapriesgos">
+														Riesgos de Corrupción
+													</button>
+												</h2>
+												<div id="collapriesgos" class="accordion-collapse collapse" aria-labelledby="riesgos" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='80';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="riesgosp">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapriesgop" aria-expanded="false" aria-controls="collapriesgop">
+														Plan Tratamiento Riesgos Seguridad y Privacidad 2022
+													</button>
+												</h2>
+												<div id="collapriesgop" class="accordion-collapse collapse" aria-labelledby="riesgosp" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='82';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="seguridadp">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseguridadp" aria-expanded="false" aria-controls="collapseguridadp">
+														Plan de Seguridad y Privacidad
+													</button>
+												</h2>
+												<div id="collapseguridadp" class="accordion-collapse collapse" aria-labelledby="seguridadp" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='83';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<?php  
+										break;
+										case 36: ?>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="informes">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapinformes" aria-expanded="false" aria-controls="collapinformes">
+														Informes Control Interno
+													</button>
+												</h2>
+												<div id="collapinformes" class="accordion-collapse collapse" aria-labelledby="informes" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='36';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="gasto">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapgasto" aria-expanded="false" aria-controls="collapgasto">
+														Informes Austeridad en el Gasto
+													</button>
+												</h2>
+												<div id="collapgasto" class="accordion-collapse collapse" aria-labelledby="gasto" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='71';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="pqrsfd">
+													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collappqrsdf" aria-expanded="false" aria-controls="collappqrsdf">
+														Informes PQRSFD
+													</button>
+												</h2>
+												<div id="collappqrsdf" class="accordion-collapse collapse" aria-labelledby="pqrsfd" data-bs-parent="#accordionExample">
+													<div class="accordion-body">
+														<?php
+														$codigo='55';
+														include ('php/estados_financieros.php'); 
+														?>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<?php  
 										break;
 										default:
 										$codigo=$codigo_subcat2;
