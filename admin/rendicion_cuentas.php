@@ -98,7 +98,7 @@ include ('includes/adminnav.php');
 
 
 	} 
-}
+
 ?>
 
 <!-- CONTENEDOR AGREGAR Y TABLA DE CONSULTA -->
@@ -140,7 +140,7 @@ include ('includes/adminnav.php');
 									<option value="Inactivo">Inactivo</option>
 								</select>
 								<label for="inputEmail4">Descripcion</label>
-								<textarea name="descripcion_rendicion" id="" cols="30" rows="10">Descripcion</textarea>
+								<textarea name="descripcion_rendicion" id="" cols="30" rows="10" class="ckeditor form-control"></textarea>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
 									<button type="submit" class="btn btn-success" name="irendicion">
@@ -155,10 +155,7 @@ include ('includes/adminnav.php');
 		<div class="col-md-4"></div>
 
 	</div>
-	<!-- 	SOLO EL ROL SUPERADMINISTRADOR PUEDE ACCEDER A ESTA SESION -->
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
-		<div class="row">
+			<div class="row">
 			<div class="col-lg-12">
 				<div class="table-responsive">
 					<table id="tabla_glosario" class="table table-bordered table-striped  ">
@@ -260,7 +257,7 @@ include ('includes/adminnav.php');
 						<option value="Inactivo">Inactivo</option>
 					</select>
 					<label for="inputEmail4">Descripcion</label>
-					<textarea name="descripcion_rendicion" id="descripcion_rendicion" cols="30" rows="10">Descripcion</textarea>
+					<textarea name="descripcion_rendicion" id="descripcion_rendicion" class="ckeditor" cols="30" rows="10">Descripcion</textarea>
 					<input type="number" id="cod_rendicion">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

@@ -52,7 +52,13 @@
             </div>
             </div>
             </li>
-            <!-- Menu para administrar Usuarios-->
+            ';
+        }
+        ?>
+        <?php 
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Transparencia") {
+            echo'
+            <!-- Menu para administrar Ley Transparencia-->
             <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transparencia"
             aria-expanded="true" aria-controls="transparencia">

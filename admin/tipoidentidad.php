@@ -3,14 +3,7 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
+
 	if (isset($_POST['iidentidad'])) {
 		$nombre_identidad = $_POST['nombre_identidad'];
 
@@ -59,7 +52,7 @@ else {
 			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar el Tipo de Identidad", "error");</script>';  
 		}
 	} 
-}
+
 ?>
 <!-- Content Row -->
 <div class="container-fluid">

@@ -167,7 +167,7 @@ if($link==0){
 </div>
 <div class="form-group">
     <label for="post_content">Contenido</label>
-    <textarea   name="content" id="" ><?php  echo $post_content;  ?>
+    <textarea   name="content" id="" class="ckeditor form-control"><?php  echo $post_content;  ?>
 </textarea>
 </div>
 <button type="submit" name="update" class="btn btn-warning" value="Update Post">Editar</button>

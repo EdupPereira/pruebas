@@ -3,138 +3,60 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
-	if (isset($_POST['idirectorio'])) {
 
-		$image = $_FILES['image']['name'];
-		$ext = $_FILES['image']['type'];
-		$validExt = array ("image/gif",  "image/jpeg",  "image/pjpeg", "image/png");
-		if (empty($image)) {
-			echo "<script>alert('Adjunta una imagen');</script>";
-		}
-		else if ($_FILES['image']['size'] <= 0 || $_FILES['image']['size'] > 1024000 )
-		{
-			echo "<script>alert('El tamaño de la imagen no es correcto');</script>";
-		}
-		else if (!in_array($ext, $validExt)){
-			echo "<script>alert('No es una imagen válida.');</script>";
+if (isset($_POST['idirectorio'])) {
 
-		}
-		else {
-			$nombre_directorio = $_POST['nombre_directorio'];
-			$telefono_directorio = $_POST['telefono_directorio'];
-			$direccion_directorio = $_POST['direccion_directorio'];
-			$correo_directorio = $_POST['correo_directorio'];
-			$tipo_directorio = $_POST['tipo_directorio'];
-			$sitioweb_directorio = $_POST['sitioweb_directorio'];
-			$folder  = '../directorio/';
-			$imgext = strtolower(pathinfo($image, PATHINFO_EXTENSION) );
-			$picture = rand(1000 , 1000000) .'.'.$imgext;
-			if(move_uploaded_file($_FILES['image']['tmp_name'], $folder.$picture)) {
-				$query = "INSERT INTO directorio(nombre_directorio, telefono_directorio,direccion_directorio,correo_directorio,tipo_directorio,sitioweb_directorio,img_directorio) VALUES ('$nombre_directorio','$telefono_directorio','$direccion_directorio','$correo_directorio','$tipo_directorio','$sitioweb_directorio','$picture')";
-				$result = pg_query($query);
-				if (pg_affected_rows($result) > 0) {
-					echo '<script>
-					swal("Buen Trabajo!", "Se registro con éxito", "success");
-					</script>';
-				}
-				else {
-					echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error ", "error");</script>';
-				}
-			}
-		}
-	}	
+	$image = $_FILES['image']['name'];
+	$ext = $_FILES['image']['type'];
+	$validExt = array ("image/gif",  "image/jpeg",  "image/pjpeg", "image/png");
+	if (empty($image)) {
+		echo "<script>alert('Adjunta una imagen');</script>";
+	}
+	else if ($_FILES['image']['size'] <= 0 || $_FILES['image']['size'] > 1024000 )
+	{
+		echo "<script>alert('El tamaño de la imagen no es correcto');</script>";
+	}
+	else if (!in_array($ext, $validExt)){
+		echo "<script>alert('No es una imagen válida.');</script>";
 
-	if(isset($_POST['editarDirectorio'])) {
-		$codigo_directorio = $_POST['codigo_directorio'];
+	}
+	else {
 		$nombre_directorio = $_POST['nombre_directorio'];
 		$telefono_directorio = $_POST['telefono_directorio'];
 		$direccion_directorio = $_POST['direccion_directorio'];
 		$correo_directorio = $_POST['correo_directorio'];
 		$tipo_directorio = $_POST['tipo_directorio'];
 		$sitioweb_directorio = $_POST['sitioweb_directorio'];
-		
-
-		if ($_FILES['image']['name'] != null) {
-			$query = "SELECT codigo_directorio,img_directorio FROM directorio WHERE  codigo_directorio = '$codigo_directorio'";
-			$run_query = pg_query($conn, $query);
-
-			if (pg_num_rows($run_query) > 0) {
-				while ($row = pg_fetch_array($run_query)) {
-					$img_directorio = $row['img_directorio'];
-				}
-					//acá le damos la direccion exacta del archivo
-				$path = '../directorio/'.$img_directorio.'';
-				chown($path, 666);
-
-				if (unlink($path)) {
-					echo 'success';
-				} else {
-					echo 'fail';
-				}
-			}
-			$image = $_FILES['image']['name'];
-			$ext = $_FILES['image']['type'];
-			$validExt = array ("image/gif",  "image/jpeg",  "image/pjpeg", "image/png");
-			if (empty($image)) {
-				$picture = $image;
-			}
-			else if ($_FILES['image']['size'] <= 0 || $_FILES['image']['size'] > 1024000 )
-			{
-				echo "<script>swal('Tamaño de imagen incorrecto');
-				window.location.href = 'directorio.php';</script>";
-
-			}
-			else if (!in_array($ext, $validExt)){
-				echo "<script>swal('Imagen no válida');
-				window.location.href = 'directorio.php';</script>";
-				exit();
-			}
-			else {
-				$folder  = '../directorio/';
-				$imgext = strtolower(pathinfo($image, PATHINFO_EXTENSION) );
-				$picture = rand(1000 , 1000000) .'.'.$imgext;
-				move_uploaded_file($_FILES['image']['tmp_name'], $folder.$picture);
-			}
-			//EDITAR MODIFICANDO LA IMAGEN
-			$editarDir = "UPDATE directorio SET nombre_directorio = '$nombre_directorio',telefono_directorio='$telefono_directorio',direccion_directorio='$direccion_directorio', correo_directorio='$correo_directorio',tipo_directorio='$tipo_directorio',sitioweb_directorio='$sitioweb_directorio',img_directorio='$picture' WHERE codigo_directorio = '$codigo_directorio'";
-
-			$resultado = pg_query($editarDir);
-			if (pg_affected_rows($resultado) > 0 ) {
+		$folder  = '../directorio/';
+		$imgext = strtolower(pathinfo($image, PATHINFO_EXTENSION) );
+		$picture = rand(1000 , 1000000) .'.'.$imgext;
+		if(move_uploaded_file($_FILES['image']['tmp_name'], $folder.$picture)) {
+			$query = "INSERT INTO directorio(nombre_directorio, telefono_directorio,direccion_directorio,correo_directorio,tipo_directorio,sitioweb_directorio,img_directorio) VALUES ('$nombre_directorio','$telefono_directorio','$direccion_directorio','$correo_directorio','$tipo_directorio','$sitioweb_directorio','$picture')";
+			$result = pg_query($query);
+			if (pg_affected_rows($result) > 0) {
 				echo '<script>
-				swal("Buen Trabajo!", "Se edito con éxito", "success");
-				</script>';
-
-			}else {
-				echo '<script>swal("ERROR!", "Lo sentimos ocurrió un errorRRR", "error");</script>';
-			}
-		}else{
-			//EDITAR SIN MODIFICAR LA IMAGEN
-			$editarDir = "UPDATE directorio SET nombre_directorio = '$nombre_directorio',telefono_directorio='$telefono_directorio',direccion_directorio='$direccion_directorio', correo_directorio='$correo_directorio',tipo_directorio='$tipo_directorio',sitioweb_directorio='$sitioweb_directorio' WHERE codigo_directorio = '$codigo_directorio'";
-
-			$resultado = pg_query($editarDir);
-			if (pg_affected_rows($resultado) > 0 ) {
-				echo '<script>
-				swal("Buen Trabajo!", "Se edito con éxito", "success");
+				swal("Buen Trabajo!", "Se registro con éxito", "success");
 				</script>';
 			}
-
 			else {
-				echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error con la IMG", "error");</script>';
+				echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error ", "error");</script>';
 			}
 		}
-	} 
+	}
+}	
 
-	if(isset($_POST['elimina_directorio'])) {
-		$codigo_directorio_eliminar =$_POST['elimina_directorio'];
-		$query = "SELECT codigo_directorio,img_directorio FROM directorio WHERE  codigo_directorio = '$codigo_directorio_eliminar'";
+if(isset($_POST['editarDirectorio'])) {
+	$codigo_directorio = $_POST['codigo_directorio'];
+	$nombre_directorio = $_POST['nombre_directorio'];
+	$telefono_directorio = $_POST['telefono_directorio'];
+	$direccion_directorio = $_POST['direccion_directorio'];
+	$correo_directorio = $_POST['correo_directorio'];
+	$tipo_directorio = $_POST['tipo_directorio'];
+	$sitioweb_directorio = $_POST['sitioweb_directorio'];
+	
+
+	if ($_FILES['image']['name'] != null) {
+		$query = "SELECT codigo_directorio,img_directorio FROM directorio WHERE  codigo_directorio = '$codigo_directorio'";
 		$run_query = pg_query($conn, $query);
 
 		if (pg_num_rows($run_query) > 0) {
@@ -146,25 +68,96 @@ else {
 			chown($path, 666);
 
 			if (unlink($path)) {
-				//echo 'success';
+				echo 'success';
 			} else {
-				//echo 'fail';
+				echo 'fail';
 			}
 		}
-		$del_query = "DELETE FROM directorio WHERE codigo_directorio='$codigo_directorio_eliminar'";
-		$run_del_query = pg_query($del_query);
-		if (pg_affected_rows($run_del_query) > 0) {
-			echo '<script>
-			swal("Buen Trabajo!", "Se Elimino con éxito", "success");
-			</script>';
+		$image = $_FILES['image']['name'];
+		$ext = $_FILES['image']['type'];
+		$validExt = array ("image/gif",  "image/jpeg",  "image/pjpeg", "image/png");
+		if (empty($image)) {
+			$picture = $image;
+		}
+		else if ($_FILES['image']['size'] <= 0 || $_FILES['image']['size'] > 1024000 )
+		{
+			echo "<script>swal('Tamaño de imagen incorrecto');
+			window.location.href = 'directorio.php';</script>";
+
+		}
+		else if (!in_array($ext, $validExt)){
+			echo "<script>swal('Imagen no válida');
+			window.location.href = 'directorio.php';</script>";
+			exit();
 		}
 		else {
-			echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
+			$folder  = '../directorio/';
+			$imgext = strtolower(pathinfo($image, PATHINFO_EXTENSION) );
+			$picture = rand(1000 , 1000000) .'.'.$imgext;
+			move_uploaded_file($_FILES['image']['tmp_name'], $folder.$picture);
+		}
+			//EDITAR MODIFICANDO LA IMAGEN
+		$editarDir = "UPDATE directorio SET nombre_directorio = '$nombre_directorio',telefono_directorio='$telefono_directorio',direccion_directorio='$direccion_directorio', correo_directorio='$correo_directorio',tipo_directorio='$tipo_directorio',sitioweb_directorio='$sitioweb_directorio',img_directorio='$picture' WHERE codigo_directorio = '$codigo_directorio'";
+
+		$resultado = pg_query($editarDir);
+		if (pg_affected_rows($resultado) > 0 ) {
+			echo '<script>
+			swal("Buen Trabajo!", "Se edito con éxito", "success");
+			</script>';
+
+		}else {
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un errorRRR", "error");</script>';
+		}
+	}else{
+			//EDITAR SIN MODIFICAR LA IMAGEN
+		$editarDir = "UPDATE directorio SET nombre_directorio = '$nombre_directorio',telefono_directorio='$telefono_directorio',direccion_directorio='$direccion_directorio', correo_directorio='$correo_directorio',tipo_directorio='$tipo_directorio',sitioweb_directorio='$sitioweb_directorio' WHERE codigo_directorio = '$codigo_directorio'";
+
+		$resultado = pg_query($editarDir);
+		if (pg_affected_rows($resultado) > 0 ) {
+			echo '<script>
+			swal("Buen Trabajo!", "Se edito con éxito", "success");
+			</script>';
 		}
 
+		else {
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error con la IMG", "error");</script>';
+		}
+	}
+} 
 
-	} 
-}
+if(isset($_POST['elimina_directorio'])) {
+	$codigo_directorio_eliminar =$_POST['elimina_directorio'];
+	$query = "SELECT codigo_directorio,img_directorio FROM directorio WHERE  codigo_directorio = '$codigo_directorio_eliminar'";
+	$run_query = pg_query($conn, $query);
+
+	if (pg_num_rows($run_query) > 0) {
+		while ($row = pg_fetch_array($run_query)) {
+			$img_directorio = $row['img_directorio'];
+		}
+					//acá le damos la direccion exacta del archivo
+		$path = '../directorio/'.$img_directorio.'';
+		chown($path, 666);
+
+		if (unlink($path)) {
+				//echo 'success';
+		} else {
+				//echo 'fail';
+		}
+	}
+	$del_query = "DELETE FROM directorio WHERE codigo_directorio='$codigo_directorio_eliminar'";
+	$run_del_query = pg_query($del_query);
+	if (pg_affected_rows($run_del_query) > 0) {
+		echo '<script>
+		swal("Buen Trabajo!", "Se Elimino con éxito", "success");
+		</script>';
+	}
+	else {
+		echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
+	}
+
+
+} 
+
 ?>
 
 <!-- CONTENEDOR AGREGAR Y TABLA DE CONSULTA -->
@@ -237,9 +230,7 @@ else {
 		<div class="col-md-4"></div>
 
 	</div>
-	<!-- 	SOLO EL ROL SUPERADMINISTRADOR PUEDE ACCEDER A ESTA SESION -->
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
+	
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="table-responsive">
@@ -308,7 +299,7 @@ else {
 					</table>
 				</div>
 			</div>
-		<?php }?>
+		
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR ROL-->

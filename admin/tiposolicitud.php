@@ -3,63 +3,55 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
-	if (isset($_POST['isolicitud'])) {
-		$nombre_solicitud = $_POST['nombre_solicitud'];
+if (isset($_POST['isolicitud'])) {
+	$nombre_solicitud = $_POST['nombre_solicitud'];
 
-		$query = "INSERT INTO tipo_solicitud(nombre_solicitud) VALUES ('$nombre_solicitud')";
-		$result = pg_query($query);
-		if (pg_affected_rows($result) > 0) {
-			echo '<script>
-			swal("Buen Trabajo!", "El Tipo de Solicitud se registro con éxito", "success");
-			</script>';
-		}
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al registrar el Tipo de Solicitud", "error");</script>';
-		}
+	$query = "INSERT INTO tipo_solicitud(nombre_solicitud) VALUES ('$nombre_solicitud')";
+	$result = pg_query($query);
+	if (pg_affected_rows($result) > 0) {
+		echo '<script>
+		swal("Buen Trabajo!", "El Tipo de Solicitud se registro con éxito", "success");
+		</script>';
+	}
+	else {
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al registrar el Tipo de Solicitud", "error");</script>';
+	}
+}
+
+if(isset($_POST['editarSolicitud'])) {
+
+	$codigo_solicitud = $_POST['codigo_solicitud'];
+	$nombre_solicitud = $_POST['nombre_solicitud'];
+	
+	$editarSolicitud1 = "UPDATE tipo_solicitud SET nombre_solicitud = '$nombre_solicitud' WHERE codigo_solicitud = '$codigo_solicitud'";
+
+	$resultado = pg_query($editarSolicitud1);
+	if (pg_affected_rows($resultado) > 0 ) {
+		echo '
+		<script>
+		swal("Buen Trabajo!", "El Tipo de Solicitud se edito con éxito", "success");
+		</script>';
 	}
 
-	if(isset($_POST['editarSolicitud'])) {
+	else {
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Tipo de Solicitud", "error");</script>';
+	}
+} 
 
-		$codigo_solicitud = $_POST['codigo_solicitud'];
-		$nombre_solicitud = $_POST['nombre_solicitud'];
-		
-		$editarSolicitud1 = "UPDATE tipo_solicitud SET nombre_solicitud = '$nombre_solicitud' WHERE codigo_solicitud = '$codigo_solicitud'";
+if(isset($_POST['elimina_solicitud'])) {
+	$codigo_solicitud =$_POST['elimina_solicitud'];
+	$del_query = "DELETE FROM tipo_solicitud WHERE codigo_solicitud='$codigo_solicitud'";
+	$run_del_query = pg_query($del_query);
+	if (pg_affected_rows($run_del_query) > 0) {
+		echo '<script>
+		swal("Buen Trabajo!", "El Tipo de Solicitud se Elimino con éxito", "success");
+		</script>';
+	}
+	else {
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar el Tipo de Solicitud", "error");</script>';  
+	}
+} 
 
-		$resultado = pg_query($editarSolicitud1);
-		if (pg_affected_rows($resultado) > 0 ) {
-			echo '
-			<script>
-			swal("Buen Trabajo!", "El Tipo de Solicitud se edito con éxito", "success");
-			</script>';
-		}
-
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Tipo de Solicitud", "error");</script>';
-		}
-	} 
-
-	if(isset($_POST['elimina_solicitud'])) {
-		$codigo_solicitud =$_POST['elimina_solicitud'];
-		$del_query = "DELETE FROM tipo_solicitud WHERE codigo_solicitud='$codigo_solicitud'";
-		$run_del_query = pg_query($del_query);
-		if (pg_affected_rows($run_del_query) > 0) {
-			echo '<script>
-			swal("Buen Trabajo!", "El Tipo de Solicitud se Elimino con éxito", "success");
-			</script>';
-		}
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar el Tipo de Solicitud", "error");</script>';  
-		}
-	} 
-}
 ?>
 <!-- Content Row -->
 <div class="container-fluid">

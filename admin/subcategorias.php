@@ -3,14 +3,7 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Categorías');
-	window.location.href='./index.php'; </script>";
-}
-else {
+
 	if (isset($_POST['icategoria'])) {
 		$indice_subcat=$_POST['indice_subcat'];
 		$descripcion_subcat=$_POST['descripcion_subcat'];
@@ -64,7 +57,7 @@ else {
 			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la categoría", "error");</script>';  
 		}
 	} 
-}
+
 ?>
 <!-- Content Row -->
 <div class="container-fluid">
@@ -127,8 +120,7 @@ else {
 		<div class="col-md-4"></div>
 
 	</div>
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
+	
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="table-responsive">
@@ -185,7 +177,7 @@ else {
 					</table>
 				</div>
 			</div>
-		<?php }?>
+		
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR AREA-->

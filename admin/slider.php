@@ -3,14 +3,7 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
+
 	//SI ES EL SUPERADMINISTRADOR PUEDE REALIZAR ESTAS ACCIONES
 
 	if (isset($_POST['islider'])) {
@@ -124,7 +117,7 @@ else {
 			echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
 		}
 	} 
-}
+
 ?>
 
 <!-- CONTENEDOR AGREGAR Y TABLA DE CONSULTA -->

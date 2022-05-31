@@ -3,14 +3,7 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
+
 	if (isset($_POST['iglosario'])) {
 		$nombre_glosario = $_POST['nombre_glosario'];
 		$descripcion_glosario = $_POST['descripcion_glosario'];
@@ -64,7 +57,7 @@ else {
 
 
 	} 
-}
+
 ?>
 
 <!-- CONTENEDOR AGREGAR Y TABLA DE CONSULTA -->
@@ -105,9 +98,7 @@ else {
 		<div class="col-md-4"></div>
 
 	</div>
-	<!-- 	SOLO EL ROL SUPERADMINISTRADOR PUEDE ACCEDER A ESTA SESION -->
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
+	
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="table-responsive">
@@ -160,7 +151,7 @@ else {
 					</table>
 				</div>
 			</div>
-		<?php }?>
+		
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR ROL-->

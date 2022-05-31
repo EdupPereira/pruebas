@@ -57,7 +57,7 @@ include ('includes/adminnav.php');
 
 
 	} 
-}
+
 ?>
 
 <!-- CONTENEDOR AGREGAR Y TABLA DE CONSULTA -->
@@ -98,9 +98,7 @@ include ('includes/adminnav.php');
 		<div class="col-md-4"></div>
 
 	</div>
-	<!-- 	SOLO EL ROL SUPERADMINISTRADOR PUEDE ACCEDER A ESTA SESION -->
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
+	
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="table-responsive">

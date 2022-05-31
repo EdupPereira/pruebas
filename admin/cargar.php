@@ -3,32 +3,26 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
-	include ('php/insertar_archivos.php');
-	include ('php/editar_archivo.php');
-	if(isset($_POST['elimina_archivo'])) {
-		$elimina_archivo =$_POST['elimina_archivo'];
-		$del_query = "DELETE FROM archivos WHERE cod_archivo='$elimina_archivo'";
-		$run_del_query = pg_query($del_query);
-		if (pg_affected_rows($run_del_query) > 0) {
-			echo '<script>
-			swal("Buen Trabajo!", "El Archivo se Elimino con éxito", "success");
-			</script>';
-		}
-		else {
-			echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
-		}
+
+include ('php/insertar_archivos.php');
+include ('php/editar_archivo.php');
+
+if(isset($_POST['elimina_archivo'])) {
+	$elimina_archivo =$_POST['elimina_archivo'];
+	$del_query = "DELETE FROM archivos WHERE cod_archivo='$elimina_archivo'";
+	$run_del_query = pg_query($del_query);
+	if (pg_affected_rows($run_del_query) > 0) {
+		echo '<script>
+		swal("Buen Trabajo!", "El Archivo se Elimino con éxito", "success");
+		</script>';
+	}
+	else {
+		echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
+	}
 
 
-	} 
-}
+} 
+
 
 ?>
 <!-- Content Row -->
@@ -111,8 +105,7 @@ else {
 
 
 	</div>
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
+	
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="table-responsive">
@@ -193,7 +186,7 @@ else {
 					</table>
 				</div>
 			</div>
-		<?php }?>
+	
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR Estado-->
@@ -250,9 +243,9 @@ else {
 							<input class="form-control" type="file" name="archivo" id="archivo">
 						</div>
 						<div class="form-group col-md-12 mb-3">
-										<label for="inputEmail4">Link de Youtube o Sitio Web</label>
-										<input class="form-control" type="text" id="link_archivo" name="link_archivo" placeholder="Pegar el link ">
-									</div>
+							<label for="inputEmail4">Link de Youtube o Sitio Web</label>
+							<input class="form-control" type="text" id="link_archivo" name="link_archivo" placeholder="Pegar el link ">
+						</div>
 					</div>
 
 					<div class="modal-footer">
@@ -275,7 +268,7 @@ $('#finan').on('show.bs.modal', function (event) {
           var descripcion_archivo = button.data('descripcion_archivo');
           var fecha_archivo = button.data('fecha_archivo');
           var indice_subcat = button.data('indice_subcat');
-           var link_archivo = button.data('link_archivo');
+          var link_archivo = button.data('link_archivo');
           //AGREGAR LOS DATOS CAPURADOS AL MODAL
           var modal = $(this);
           modal.find('.modal-body #cod_archivo').val(cod_archivo);
@@ -283,8 +276,8 @@ $('#finan').on('show.bs.modal', function (event) {
           modal.find('.modal-body #descripcion_archivo').val(descripcion_archivo);
           modal.find('.modal-body #fecha_archivo').val(fecha_archivo);
           modal.find('.modal-body #indice_subcat').val(indice_subcat);
-           modal.find('.modal-body #link_archivo').val(link_archivo);
-        });
+          modal.find('.modal-body #link_archivo').val(link_archivo);
+      });
 //EVITA EL ENVIO DEL FORMULARIO, SI EL USUARIO ESTA SEGURO DE ELIMINAR ACTIVA EL ENVIO
 $('.aeliminar_archivo').submit(function(e){
 	e.preventDefault();

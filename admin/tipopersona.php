@@ -3,63 +3,56 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
-	if (isset($_POST['ipersona'])) {
-		$nombre_persona = $_POST['nombre_persona'];
 
-		$query = "INSERT INTO tipo_persona(nombre_persona) VALUES ('$nombre_persona')";
-		$result = pg_query($query);
-		if (pg_affected_rows($result) > 0) {
-			echo '<script>
-			swal("Buen Trabajo!", "El Tipo de Persona se registro con éxito", "success");
-			</script>';
-		}
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al registrar el Tipo de Persona", "error");</script>';
-		}
+if (isset($_POST['ipersona'])) {
+	$nombre_persona = $_POST['nombre_persona'];
+
+	$query = "INSERT INTO tipo_persona(nombre_persona) VALUES ('$nombre_persona')";
+	$result = pg_query($query);
+	if (pg_affected_rows($result) > 0) {
+		echo '<script>
+		swal("Buen Trabajo!", "El Tipo de Persona se registro con éxito", "success");
+		</script>';
+	}
+	else {
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al registrar el Tipo de Persona", "error");</script>';
+	}
+}
+
+if(isset($_POST['editarPersona'])) {
+
+	$codigo_persona = $_POST['codigo_persona'];
+	$nombre_persona = $_POST['nombre_persona'];
+	
+	$editarPersona1 = "UPDATE tipo_persona SET nombre_persona = '$nombre_persona' WHERE codigo_persona = '$codigo_persona'";
+
+	$resultado = pg_query($editarPersona1);
+	if (pg_affected_rows($resultado) > 0 ) {
+		echo '
+		<script>
+		swal("Buen Trabajo!", "El Tipo de Persona se edito con éxito", "success");
+		</script>';
 	}
 
-	if(isset($_POST['editarPersona'])) {
+	else {
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Tipo de Persona", "error");</script>';
+	}
+} 
 
-		$codigo_persona = $_POST['codigo_persona'];
-		$nombre_persona = $_POST['nombre_persona'];
-		
-		$editarPersona1 = "UPDATE tipo_persona SET nombre_persona = '$nombre_persona' WHERE codigo_persona = '$codigo_persona'";
+if(isset($_POST['elimina_persona'])) {
+	$codigo_persona =$_POST['elimina_persona'];
+	$del_query = "DELETE FROM tipo_persona WHERE codigo_persona='$codigo_persona'";
+	$run_del_query = pg_query($del_query);
+	if (pg_affected_rows($run_del_query) > 0) {
+		echo '<script>
+		swal("Buen Trabajo!", "El Tipo de Persona se Elimino con éxito", "success");
+		</script>';
+	}
+	else {
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar el Tipo de Persona", "error");</script>';  
+	}
+} 
 
-		$resultado = pg_query($editarPersona1);
-		if (pg_affected_rows($resultado) > 0 ) {
-			echo '
-			<script>
-			swal("Buen Trabajo!", "El Tipo de Persona se edito con éxito", "success");
-			</script>';
-		}
-
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Tipo de Persona", "error");</script>';
-		}
-	} 
-
-	if(isset($_POST['elimina_persona'])) {
-		$codigo_persona =$_POST['elimina_persona'];
-		$del_query = "DELETE FROM tipo_persona WHERE codigo_persona='$codigo_persona'";
-		$run_del_query = pg_query($del_query);
-		if (pg_affected_rows($run_del_query) > 0) {
-			echo '<script>
-			swal("Buen Trabajo!", "El Tipo de Persona se Elimino con éxito", "success");
-			</script>';
-		}
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar el Tipo de Persona", "error");</script>';  
-		}
-	} 
-}
 ?>
 <!-- Content Row -->
 <div class="container-fluid">
