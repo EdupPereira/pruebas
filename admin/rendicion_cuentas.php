@@ -3,14 +3,7 @@ include('includes/connection.php');
 include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
-if (isset($_SESSION['role'])) {
-	$currentrole = $_SESSION['role'];
-}
-if ( $currentrole == 'user') {
-	echo "<script> alert('Solo los Administradores pueden agregar Usuarios');
-	window.location.href='./index.php'; </script>";
-}
-else {
+
 	if (isset($_POST['irendicion'])) {
 		$image = $_FILES['image']['name'];
 		$ext = $_FILES['image']['type'];
@@ -236,7 +229,7 @@ else {
 					</table>
 				</div>
 			</div>
-		<?php }?>
+		
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR ROL-->

@@ -15,11 +15,11 @@
 			<table id="" class="display table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Nombre</th>
-						<th>Descripción</th>
-						<th>Fecha</th>
-						<th>Archivo</th>
-						
+						<th class="text-center">Nombre</th>
+						<th class="text-center">Descripción</th>
+						<th class="text-center">Fecha</th>
+						<th class="text-center">Archivo</th>
+						<th class="text-center">Enlace</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,9 +48,11 @@
 							echo "<td>$nombre_archivo</td>";
 							echo "<td>$descripcion_archivo</td>";
 							echo "<td>$fecha_archivo</td>";
-							echo "<td><center><a href='transparencia/$archivo' target='_blank'><button class='btn btn-success' title='$archivo'>Ver</button></a></center>";
+							echo "<td class='text-center'><center><a href='transparencia/$archivo' target='_blank'><button class='btn btn-success' title='$archivo'>Ver</button></a></center> </td>";
 							if ($link_archivo!= null) {
-								echo "<hr><p><a href='$link_archivo' target='_blank'><button class='btn btn-info' title='$link_archivo'>Link</button></a>";
+								echo "<td><center><a href='$link_archivo' target='_blank'><button class='btn btn-info' title='$link_archivo'>Link</button></a></td>";
+							}else{
+								echo "<td>-- </td>";
 							}
 							echo "</td>";
 							echo "</tr>";
