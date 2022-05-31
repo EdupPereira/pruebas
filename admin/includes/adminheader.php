@@ -15,8 +15,8 @@ else {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="EDUP - Empresa de Desarrollo Urbano de Pereira">
+    <meta name="author" content="Empresa de Desarrollo Urbano de Pereira">
     <title>EDUP - Empresa de Desarrollo Urbano de Pereira</title>
     <!-- CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -27,7 +27,7 @@ else {
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.css"/>
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
     <!-- javaScript-->
@@ -48,7 +48,7 @@ else {
 
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/sb-admin-2.js"></script>
-<script src="js/ckeditor.js"></script>
+    <script src="js/ckeditor.js"></script>
     <script src="js/sample.js"></script>
     
     <link rel="stylesheet" href="css/toolbarconfigurator/lib/codemirror/neo.css">

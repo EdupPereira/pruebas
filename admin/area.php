@@ -94,7 +94,7 @@ else {
 				<div class="table-responsive">
 					<table id="tabla_area" class="table table-bordered table-striped table-hover">
 						<thead class="btn-info">
-							<tr>
+							<tr class="text-center">
 								<th>Codigo Area</th>
 								<th>Nombre Area</th>
 								<th>Editar</th>
@@ -114,13 +114,13 @@ else {
 									$nombre_area = $row['nombre_area'];
 
 
-									echo "<tr>";
+									echo "<tr class='text-center'>";
 									echo "<td>$codigo_area</td>";
 									echo "<td>$nombre_area</td>";
 
 
 									echo "<td>
-									<a class='btn btn-sm btn-warning' href='#editArea' data-toggle='modal' data-codigo_area='".$codigo_area."' data-nombre_area='".$nombre_area."'><i class='fas fa-edit'></i></a>
+									<a class='btn  btn-warning' href='#editArea' data-toggle='modal' data-codigo_area='".$codigo_area."' data-nombre_area='".$nombre_area."'><i class='fas fa-edit'></i></a>
 									</td>";
 									echo '
 									<form action="" class="delarea"  method="POST" >

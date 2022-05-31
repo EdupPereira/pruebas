@@ -14,13 +14,25 @@ if(isset($_POST['elimina_archivo'])) {
 
 
 } 
+        //CONSULTA DEL MENU (CATEGORIAS)
+$categorias= "SELECT * FROM categoria_transparencia WHERE codigo_categoriat ='{$codigo}'";
+$run_query = pg_query($conn, $categorias);
+if (pg_num_rows($run_query) > 0) {
+	while ($fila = pg_fetch_array($run_query)) {
+		$codigo_categoria=$fila['codigo_categoriat'];
+		$descripcion_categoriat=$fila["descripcion_categoriat"];
+	}
+}
 ?>
+
 <!-- Content Row -->
 <div class="container-fluid">
 	<div class="row">
+		<h3 class="col-md-12 text-center"><?php echo $descripcion_categoriat; ?></h3>
 		<div class="col-md-4"></div>
-		<div class="card mb-3">
-			<div class="card-header">
+		<div class="col-md-4 card mb-3">
+			
+			<div class="card-header text-center">
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalestados">
 					Añadir Archivos
@@ -75,7 +87,7 @@ if(isset($_POST['elimina_archivo'])) {
 										<label for="inputEmail4">Archivo</label>
 										<input class="form-control" type="file" name="archivo">
 									</div>
-													<div class="form-group col-md-12 mb-3">
+									<div class="form-group col-md-12 mb-3">
 										<label for="inputEmail4">Link de Youtube o Sitio Web</label>
 										<input class="form-control" type="text" name="link_archivo" placeholder="Pegar el link ">
 									</div>
@@ -95,90 +107,89 @@ if(isset($_POST['elimina_archivo'])) {
 
 
 	</div>
-	<?php if($_SESSION['role'] == 'superadmin')  
-	{ ?>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="table-responsive">
-					<table id="tabla_estado" class="table table-bordered table-striped table-hover">
-						<thead class="btn-info">
-							<tr>
-								<th>Código</th>
-								<th>Nombre</th>
-								<th>Descripción</th>
-								<th>Fecha</th>
-								<th>Año</th>
-								<th>Archivo</th>
-								<th>Subcategoria</th>
-								<th>Editar</th>
-								<th>Eliminar</th>
-							</tr>
-						</thead>
-						<tbody>
+	
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="table-responsive">
+				<table id="tabla_estado" class="table table-bordered table-striped table-hover">
+					<thead class="btn-info">
+						<tr>
+							<th>Código</th>
+							<th>Nombre</th>
+							<th>Descripción</th>
+							<th>Fecha</th>
+							<th>Año</th>
+							<th>Archivo</th>
+							<th>Subcategoria</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
 
-							<?php
-							
-							$query = "SELECT a.cod_archivo,a.nombre_archivo,a.descripcion_archivo,a.archivo,a.anio,a.codigo_subcat_fk,a.fecha_archivo,a.link_archivo,s.descripcion_subcat,s.codigo_subcat,s.codigo_categoriat_fk,s.indice_subcat
-							FROM archivos a
-							INNER JOIN subcategoria_transparencia s
-							ON a.codigo_subcat_fk = s.codigo_subcat
+						<?php
+
+						$query = "SELECT a.cod_archivo,a.nombre_archivo,a.descripcion_archivo,a.archivo,a.anio,a.codigo_subcat_fk,a.fecha_archivo,a.link_archivo,s.descripcion_subcat,s.codigo_subcat,s.codigo_categoriat_fk,s.indice_subcat
+						FROM archivos a
+						INNER JOIN subcategoria_transparencia s
+						ON a.codigo_subcat_fk = s.codigo_subcat
 
 
-							WHERE  s.codigo_categoriat_fk='{$codigo}' ORDER BY a.cod_archivo DESC  ";
-							$run_query = pg_query($conn, $query);
-							if (pg_num_rows($run_query) > 0) {
-								while ($row = pg_fetch_array($run_query)) {
-									$cod_archivo = $row['cod_archivo'];
-									$nombre_archivo = $row['nombre_archivo'];
-									$descripcion_archivo = $row['descripcion_archivo'];
-									$archivo = $row['archivo'];
-									$fecha_archivo = $row['fecha_archivo'];
-									$anio = $row['anio'];
-									$descripcion_subcat=$row['descripcion_subcat'];
-									$indice_subcat=$row['indice_subcat'];
-									$codigo_subcat_fk=$row['codigo_subcat_fk'];
-									$link_archivo=$row['link_archivo'];
-									echo "<tr>";
-									echo "<td>$cod_archivo</td>";
-									echo "<td>$nombre_archivo</td>";
-									echo "<td>$descripcion_archivo</td>";
-									echo "<td>$fecha_archivo</td>";
-									echo "<td>$anio</td>";
-									echo "<td><p><a href='../transparencia/$archivo' target='_blank'><button class='btn btn-danger' title='$archivo'>PDF</button></a></p>";
-									if ($link_archivo!= null) {
-										echo "<hr><p><a href='$link_archivo' target='_blank'><button class='btn btn-info' title='$link_archivo'>Link</button></a>";
-									}
-									echo "
-									</td>";
-									echo "<td>$descripcion_subcat</td>";
-									echo "<td class='text-center'>
-									<a class='btn  btn-warning text-center' href='#finan' data-toggle='modal'  data-cod_archivo='".$cod_archivo."' data-nombre_archivo='".$nombre_archivo."' data-descripcion_archivo='".$descripcion_archivo."' data-fecha_archivo='".$fecha_archivo."' data-indice_subcat='".$indice_subcat."' >
-									<i class='fas fa-edit'></i></a>
-									</td>";
-
-									echo '
-									<form action="" class="aeliminar_archivo" method="POST" >
-									<td>
-									<input type="hidden" name="elimina_archivo" value="'.$cod_archivo.'">
-									<button class="btn btn-danger" type="submit"><i class="fa fa-trash-alt" name=""></i></button>
-									</td>
-									
-									</form>
-									';
-
-									echo "</tr>";
+						WHERE  s.codigo_categoriat_fk='{$codigo}' ORDER BY a.cod_archivo DESC  ";
+						$run_query = pg_query($conn, $query);
+						if (pg_num_rows($run_query) > 0) {
+							while ($row = pg_fetch_array($run_query)) {
+								$cod_archivo = $row['cod_archivo'];
+								$nombre_archivo = $row['nombre_archivo'];
+								$descripcion_archivo = $row['descripcion_archivo'];
+								$archivo = $row['archivo'];
+								$fecha_archivo = $row['fecha_archivo'];
+								$anio = $row['anio'];
+								$descripcion_subcat=$row['descripcion_subcat'];
+								$indice_subcat=$row['indice_subcat'];
+								$codigo_subcat_fk=$row['codigo_subcat_fk'];
+								$link_archivo=$row['link_archivo'];
+								echo "<tr>";
+								echo "<td>$cod_archivo</td>";
+								echo "<td>$nombre_archivo</td>";
+								echo "<td>$descripcion_archivo</td>";
+								echo "<td>$fecha_archivo</td>";
+								echo "<td>$anio</td>";
+								echo "<td><p><a href='../transparencia/$archivo' target='_blank'><button class='btn btn-danger' title='$archivo'>PDF</button></a></p>";
+								if ($link_archivo!= null) {
+									echo "<hr><p><a href='$link_archivo' target='_blank'><button class='btn btn-info' title='$link_archivo'>Link</button></a>";
 								}
-							}
-							else {
-								echo "<tr><td class='text-center' colspan='8' >Actualmente no hay nada registrado. </td></tr>";
-							}
-							?>
+								echo "
+								</td>";
+								echo "<td>$descripcion_subcat</td>";
+								echo "<td class='text-center'>
+								<a class='btn  btn-warning text-center' href='#finan' data-toggle='modal'  data-cod_archivo='".$cod_archivo."' data-nombre_archivo='".$nombre_archivo."' data-descripcion_archivo='".$descripcion_archivo."' data-fecha_archivo='".$fecha_archivo."' data-indice_subcat='".$indice_subcat."' >
+								<i class='fas fa-edit'></i></a>
+								</td>";
 
-						</tbody>
-					</table>
-				</div>
+								echo '
+								<form action="" class="aeliminar_archivo" method="POST" >
+								<td>
+								<input type="hidden" name="elimina_archivo" value="'.$cod_archivo.'">
+								<button class="btn btn-danger" type="submit"><i class="fa fa-trash-alt" name=""></i></button>
+								</td>
+
+								</form>
+								';
+
+								echo "</tr>";
+							}
+						}
+						else {
+							echo "<tr><td class='text-center' colspan='8' >Actualmente no hay nada registrado. </td></tr>";
+						}
+						?>
+
+					</tbody>
+				</table>
 			</div>
-		<?php }?>
+		</div>
+		
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR Estado-->
@@ -213,7 +224,7 @@ if(isset($_POST['elimina_archivo'])) {
 							<select class="form-control input-sm " name="codigo_subcat_fk">
 								<option disabled="disabled" >Elige una opción</option>
 								<?php
-								$query = "SELECT * FROM subcategoria_transparencia  ORDER BY codigo_subcat ASC";
+								$query = "SELECT * FROM subcategoria_transparencia  WHERE codigo_categoriat_fk='{$codigo}'ORDER BY codigo_subcat ASC";
 								$run_query = pg_query($conn, $query);
 								if (pg_num_rows($run_query) > 0) {
 									while ($row = pg_fetch_array($run_query)) {
@@ -235,9 +246,9 @@ if(isset($_POST['elimina_archivo'])) {
 							<input class="form-control" type="file" name="archivo" id="archivo">
 						</div>
 						<div class="form-group col-md-12 mb-3">
-										<label for="inputEmail4">Link de Youtube o Sitio Web</label>
-										<input class="form-control" type="text" id="link_archivo" name="link_archivo" placeholder="Pegar el link ">
-									</div>
+							<label for="inputEmail4">Link de Youtube o Sitio Web</label>
+							<input class="form-control" type="text" id="link_archivo" name="link_archivo" placeholder="Pegar el link ">
+						</div>
 					</div>
 
 					<div class="modal-footer">
@@ -260,7 +271,7 @@ $('#finan').on('show.bs.modal', function (event) {
           var descripcion_archivo = button.data('descripcion_archivo');
           var fecha_archivo = button.data('fecha_archivo');
           var indice_subcat = button.data('indice_subcat');
-           var link_archivo = button.data('link_archivo');
+          var link_archivo = button.data('link_archivo');
           //AGREGAR LOS DATOS CAPURADOS AL MODAL
           var modal = $(this);
           modal.find('.modal-body #cod_archivo').val(cod_archivo);
@@ -268,8 +279,8 @@ $('#finan').on('show.bs.modal', function (event) {
           modal.find('.modal-body #descripcion_archivo').val(descripcion_archivo);
           modal.find('.modal-body #fecha_archivo').val(fecha_archivo);
           modal.find('.modal-body #indice_subcat').val(indice_subcat);
-           modal.find('.modal-body #link_archivo').val(link_archivo);
-        });
+          modal.find('.modal-body #link_archivo').val(link_archivo);
+      });
 //EVITA EL ENVIO DEL FORMULARIO, SI EL USUARIO ESTA SEGURO DE ELIMINAR ACTIVA EL ENVIO
 $('.aeliminar_archivo').submit(function(e){
 	e.preventDefault();

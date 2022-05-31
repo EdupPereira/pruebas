@@ -91,7 +91,7 @@ else {
 		<div class="col-md-4"></div>
 
 	</div>
-<!-- 	SOLO EL ROL SUPERADMINISTRADOR PUEDE ACCEDER A ESTA SESION -->
+	<!-- 	SOLO EL ROL SUPERADMINISTRADOR PUEDE ACCEDER A ESTA SESION -->
 	<?php if($_SESSION['role'] == 'superadmin')  
 	{ ?>
 		<div class="row">
@@ -117,22 +117,30 @@ else {
 								while ($row = pg_fetch_array($run_query)) {
 									$codigo_rol = $row['codigo_rol'];
 									$nombre_rol = $row['nombre_rol'];
-									echo "<tr>";
+									echo "<tr class='text-center'>";
 									echo "<td>$codigo_rol</td>";
 									echo "<td>$nombre_rol</td>";
-									echo "<td>
-									<a class='btn btn-sm btn-warning' href='#editRol' data-toggle='modal' data-codigo_rol='".$codigo_rol."' data-nombre_rol='".$nombre_rol."'><i class='fas fa-edit'></i></a>
-									</td>";
-									echo '
-									<form action="" class="aeliminar_rol" method="POST" >
-									<td>
-									<input type="hidden" name="elimina_rol" value="'.$codigo_rol.'">
-									<button class="btn btn-danger" type="submit"><i class="fa fa-trash-alt" name=""></i></button>
-									</td>
-									
-									</form>
-									';
-									echo "</tr>";
+									if($nombre_rol=="superadmin" || $nombre_rol=="user"){
+										echo "<td>
+										No se puede modificar este ROL
+										</td><td>
+										No se puede eliminar este ROL
+										</td>";
+									}else{
+										echo "<td>
+										<a class='btn  btn-warning' href='#editRol' data-toggle='modal' data-codigo_rol='".$codigo_rol."' data-nombre_rol='".$nombre_rol."'><i class='fas fa-edit'></i></a>
+										</td>";
+										echo '
+										<form action="" class="aeliminar_rol" method="POST" >
+										<td>
+										<input type="hidden" name="elimina_rol" value="'.$codigo_rol.'">
+										<button class="btn btn-danger" type="submit"><i class="fa fa-trash-alt" name=""></i></button>
+										</td>
+
+										</form>
+										';
+										echo "</tr>";
+									}
 								}
 							}
 							else {

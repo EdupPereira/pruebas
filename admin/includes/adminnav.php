@@ -45,7 +45,7 @@
             <a class="collapse-item" href="./slider.php">Slider</a>
             <a class="collapse-item" href="./roles.php">Roles</a>
             <a class="collapse-item" href="./area.php">Área</a>
-            <a class="collapse-item" href="./estados.php">Estados</a>
+            
             <a class="collapse-item" href="./tipopersona.php">Tipo Persona</a>
             <a class="collapse-item" href="./tipoidentidad.php">Tipo de Identidad</a>
             <a class="collapse-item" href="./tiposolicitud.php">Tipo de Solicitud</a>
@@ -70,7 +70,6 @@
             <h6 class="collapse-header">Opciones:</h6>
             <a class="collapse-item" href="./categorias.php">Categorias</a>
             <a class="collapse-item" href="./subcategorias.php">Subcategorias</a>
-            <a class="collapse-item" href="./subcategorias.php">Matriz Ita</a>
             <a class="collapse-item" href="cargar.php">Montar Info General</a>
             <a class="collapse-item" href="./glosario.php">Glosario</a>
             <a class="collapse-item" href="./preguntas.php">Preguntas & Respuestas</a>
@@ -167,294 +166,50 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            1
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#mecanismos"
-            aria-expanded="true" aria-controls="mecanismos">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Mecanismos de Contacto del Sujeto Obligado</span>
-            </a>
-            <!-- Divider -->
-            <div id="mecanismos" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="mecanismos.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            2
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#info"
-            aria-expanded="true" aria-controls="info">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Información de Interés</span>
-            </a>
-            <!-- Divider -->
-            <div id="info" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="info.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            3
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#organica"
-            aria-expanded="true" aria-controls="organica">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Estructura Organica y Talento Humano</span>
-            </a>
-            <!-- Divider -->
-            <div id="organica" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="organica.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            4
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Normatividad"
-            aria-expanded="true" aria-controls="Normatividad">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Normatividad</span>
-            </a>
-            <!-- Divider -->
-            <div id="Normatividad" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="normatividad.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            5
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Contabilidad"
-            aria-expanded="true" aria-controls="Contabilidad">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Presupuesto</span>
-            </a>
-            <!-- Divider -->
-            <div id="Contabilidad" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="estados.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            6
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#planeacion"
-            aria-expanded="true" aria-controls="planeacion">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Planeación</span>
-            </a>
-            <!-- Divider -->
-            <div id="planeacion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="planeacion.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            7
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#control"
-            aria-expanded="true" aria-controls="control">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Control</span>
-            </a>
-            <!-- Divider -->
-            <div id="control" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="control.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            8
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contratacion"
-            aria-expanded="true" aria-controls="contratacion">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Contratación</span>
-            </a>
-            <!-- Divider -->
-            <div id="contratacion" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="contratacion.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            9
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tramites"
-            aria-expanded="true" aria-controls="tramites">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Tramites y Servicios</span>
-            </a>
-            <!-- Divider -->
-            <div id="tramites" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="tramites.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            10
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#instrumentos"
-            aria-expanded="true" aria-controls="instrumentos">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Instrumentos de Gestión de Información Publica </span>
-            </a>
-            <!-- Divider -->
-            <div id="instrumentos" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="instrumentos.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            11
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tpasiva"
-            aria-expanded="true" aria-controls="tpasiva">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Transparencia Pasiva </span>
-            </a>
-            <!-- Divider -->
-            <div id="tpasiva" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="tpasiva.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            12
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#criterio"
-            aria-expanded="true" aria-controls="criterio">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Criterio Diferencial de Accesibilidad </span>
-            </a>
-            <!-- Divider -->
-            <div id="criterio" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="criterio.php">Administrar</a>
-            </div>
-            </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-            13
-            </div>
-
-            <!-- Menu para administrar Usuarios-->
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#datos"
-            aria-expanded="true" aria-controls="datos">
-            <i class="fas fa-arrow-circle-right fa-5x"></i>
-            <span>Protección de Datos Personales </span>
-            </a>
-            <!-- Divider -->
-            <div id="datos" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="datos.php">Administrar</a>
-            </div>
-            </div>
-            </li>
             ';
         }
         ?>
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+        <?php 
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Transparencia") { 
+
+    
+                //CONSULTA DEL MENU (CATEGORIAS)
+            $categorias= "SELECT * FROM categoria_transparencia ORDER BY codigo_categoriat ASC";
+            $run_query = pg_query($conn, $categorias);
+            if (pg_num_rows($run_query) > 0) {
+                while ($fila = pg_fetch_array($run_query)) {
+                    $codigo_categoria=$fila['codigo_categoriat'];
+                    $descripcion_categoriat=$fila["descripcion_categoriat"];
+                    ?>
+                    <!-- Heading -->
+                    <div class="sidebar-heading">
+                        <?php echo $codigo_categoria; ?>
+                    </div>
+
+                    <!-- Menu para administrar Usuarios-->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#matrizp<?php echo $codigo_categoria; ?>"
+                            aria-expanded="true" aria-controls="matrizp<?php echo $codigo_categoria; ?>">
+                            <i class="fas fa-arrow-circle-right fa-5x"></i>
+                            <span> <?php echo $descripcion_categoriat; ?> </span>
+                        </a>
+                        <!-- Divider -->
+                        <div id="matrizp<?php echo $codigo_categoria; ?>" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="matriz.php?codigo=<?php echo $codigo_categoria; ?>">Administrar</a>
+                            </div>
+                        </div>
+                    </li>
+                    <hr class="sidebar-divider">
+                    <?php
+
+                }
+            } 
+        }
+        ?>
+
+
+
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -517,103 +272,103 @@
 
                 ?>
                 <span class="badge badge-danger badge-counter"><?php echo $notificacion; ?>+</span>
-                </a>
-                <!-- Counter - Alerts -->
-                <?php
-                $query = "SELECT pd.codigo_llegada,pd.fecha_llegada,pd.codigo_identidad_fk,pd.codigo_solicitud_fk,pd.codigo_pqrsd_fk,pd.codigo_persona_fk,pd.estado_llegada,ti.codigo_identidad,ti.nombre_identidad,ts.codigo_solicitud,ts.nombre_solicitud,pq.codigo_pqrsd,pq.identificacion_pqrsd,pq.nombres_pqrsd,pq.direccion_pqrsd,pq.departamento_pqrsd,pq.telefono_pqrsd,pq.correo_pqrsd,pq.descripcion_pqrsd,pq.archivo_pqrsd,pq.aceptar_pqrsd,tp.codigo_persona,tp.nombre_persona
-                FROM pqrsd_detalle pd
-                INNER JOIN tipo_identidad ti
-                ON pd.codigo_identidad_fk = ti.codigo_identidad
-                INNER JOIN tipo_solicitud ts
-                ON pd.codigo_solicitud_fk = ts.codigo_solicitud
-                INNER JOIN pqrsd pq
-                ON pd.codigo_pqrsd_fk = pq.codigo_pqrsd
-                INNER JOIN tipo_persona tp
-                ON pd.codigo_persona_fk = tp.codigo_persona
+            </a>
+            <!-- Counter - Alerts -->
+            <?php
+            $query = "SELECT pd.codigo_llegada,pd.fecha_llegada,pd.codigo_identidad_fk,pd.codigo_solicitud_fk,pd.codigo_pqrsd_fk,pd.codigo_persona_fk,pd.estado_llegada,ti.codigo_identidad,ti.nombre_identidad,ts.codigo_solicitud,ts.nombre_solicitud,pq.codigo_pqrsd,pq.identificacion_pqrsd,pq.nombres_pqrsd,pq.direccion_pqrsd,pq.departamento_pqrsd,pq.telefono_pqrsd,pq.correo_pqrsd,pq.descripcion_pqrsd,pq.archivo_pqrsd,pq.aceptar_pqrsd,tp.codigo_persona,tp.nombre_persona
+            FROM pqrsd_detalle pd
+            INNER JOIN tipo_identidad ti
+            ON pd.codigo_identidad_fk = ti.codigo_identidad
+            INNER JOIN tipo_solicitud ts
+            ON pd.codigo_solicitud_fk = ts.codigo_solicitud
+            INNER JOIN pqrsd pq
+            ON pd.codigo_pqrsd_fk = pq.codigo_pqrsd
+            INNER JOIN tipo_persona tp
+            ON pd.codigo_persona_fk = tp.codigo_persona
 
-                WHERE  pd.estado_llegada='Pendiente' ORDER BY pd.codigo_llegada DESC LIMIT 5";;
-                $result = pg_query($conn, $query);
+            WHERE  pd.estado_llegada='Pendiente' ORDER BY pd.codigo_llegada DESC LIMIT 5";;
+            $result = pg_query($conn, $query);
 
 
-                if (pg_num_rows($result) > 0) {
-                    echo '
-                    <!-- Dropdown - Alerts -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="alertsDropdown">
-                    <h6 class="dropdown-header">
-                    Alertas de PQRSFD
-                    </h6>
-                    ';
-                    while ($fila2 = pg_fetch_array($result)) {
-                        $codigo_llegada=$fila2['codigo_llegada'];
-                        $fecha_llegada=$fila2['fecha_llegada'];
-                        $nombre_identidad=$fila2['nombre_identidad'];
-                        $nombre_solicitud=$fila2['nombre_solicitud'];
-                        $identificacion_pqrsd=$fila2['identificacion_pqrsd'];
-                        $nombres_pqrsd=$fila2['nombres_pqrsd'];
-                        $estado=$fila2['estado_llegada'];
-                        $date = date_create($fecha_llegada);
-                        $fecha= date_format($date, 'd-m-Y ');
+            if (pg_num_rows($result) > 0) {
+                echo '
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                Alertas de PQRSFD
+                </h6>
+                ';
+                while ($fila2 = pg_fetch_array($result)) {
+                    $codigo_llegada=$fila2['codigo_llegada'];
+                    $fecha_llegada=$fila2['fecha_llegada'];
+                    $nombre_identidad=$fila2['nombre_identidad'];
+                    $nombre_solicitud=$fila2['nombre_solicitud'];
+                    $identificacion_pqrsd=$fila2['identificacion_pqrsd'];
+                    $nombres_pqrsd=$fila2['nombres_pqrsd'];
+                    $estado=$fila2['estado_llegada'];
+                    $date = date_create($fecha_llegada);
+                    $fecha= date_format($date, 'd-m-Y ');
 
-                        echo'
-                        <a class="dropdown-item d-flex align-items-center" href="verpqrsd.php?r='.$codigo_llegada.'">
-                        <div class="mr-3">
-                        <div class="icon-circle bg-warning">
-                        <i class="fas fa-exclamation-triangle text-white"></i>
-                        </div>
-                        </div>
-                        <div>
-                        <div class="small text-gray-500">'.$fecha.'</div>
-                        <div class="text-truncate">'.$nombre_solicitud.'</div>
-                        <div class="small text-gray-500">'.$nombres_pqrsd.'</div>
-                        </div>
-                        </a>
-
-                        ';
-
-                    }
-                    echo '
-                    <a class="dropdown-item text-center small text-gray-500" href="verpqrsd.php">Ver Todas las Alertas</a>
+                    echo'
+                    <a class="dropdown-item d-flex align-items-center" href="verpqrsd.php?r='.$codigo_llegada.'">
+                    <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                    <i class="fas fa-exclamation-triangle text-white"></i>
                     </div>
+                    </div>
+                    <div>
+                    <div class="small text-gray-500">'.$fecha.'</div>
+                    <div class="text-truncate">'.$nombre_solicitud.'</div>
+                    <div class="small text-gray-500">'.$nombres_pqrsd.'</div>
+                    </div>
+                    </a>
+
                     ';
+
                 }
-                ?>
-                <?php 
-
-
-                echo'
-                </li>
+                echo '
+                <a class="dropdown-item text-center small text-gray-500" href="verpqrsd.php">Ver Todas las Alertas</a>
+                </div>
                 ';
             }
             ?>
+            <?php 
+
+
+            echo'
+            </li>
+            ';
+        }
+        ?>
 
 
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+        <div class="topbar-divider d-none d-sm-block"></div>
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown1" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['firstname']; ?></span>
-                <img class="img-profile rounded-circle"
-                src="img/undraw_profile.svg">
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="userDropdown1">
-            <a class="dropdown-item" href="./profile.php?section=<?php echo $_SESSION['username']; ?>">
-                <i class="fas fa-users-cog fa-sm fa-fw mr-2 text-gray-400"></i>
-                Perfil
-            </a>
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown1" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['firstname']; ?></span>
+            <img class="img-profile rounded-circle"
+            src="img/undraw_profile.svg">
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+        aria-labelledby="userDropdown1">
+        <a class="dropdown-item" href="./profile.php?section=<?php echo $_SESSION['username']; ?>">
+            <i class="fas fa-users-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+            Perfil
+        </a>
 
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="../logout.php" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Salir
-            </a>
-        </div>
-    </li>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="../logout.php" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Salir
+        </a>
+    </div>
+</li>
 
 </ul>
 
@@ -646,4 +401,4 @@ aria-hidden="true">
 </div>
 </div>
 
-                
+

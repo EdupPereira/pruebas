@@ -45,8 +45,8 @@ include ('includes/adminnav.php');
 	} 
 
 	if(isset($_POST['elimina_scat'])) {
-		$codigo_cat =$_POST['elimina_cat'];
-		$del_query = "DELETE FROM categoria_transparencia WHERE codigo_categoriat='$codigo_cat'";
+		$codigo_scat =$_POST['elimina_scat'];
+		$del_query = "DELETE FROM subcategoria_transparencia WHERE codigo_subcat='{$codigo_scat}'";
 		$run_del_query = pg_query($del_query);
 		if (pg_affected_rows($run_del_query) > 0) {
 			echo '<script>
@@ -54,7 +54,7 @@ include ('includes/adminnav.php');
 			</script>';
 		}
 		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la categoría", "error");</script>';  
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la subcategoría", "error");</script>';  
 		}
 	} 
 
@@ -199,7 +199,7 @@ include ('includes/adminnav.php');
 						<label for="" >Categoria Seleccionada Actualmente</label>
 						<input type="text" id="codigo_categoriat_fk" readonly class="form-control">
 					</center>
-					<select class="form-control input-sm codigo_categoriat_fk" name="codigo_categoriat_fk" >
+					<select class="form-control  codigo_categoriat_fk" name="codigo_categoriat_fk" >
 						<?php
 						$query = "SELECT * FROM categoria_transparencia ORDER BY codigo_categoriat ASC";
 						$run_query = pg_query($conn, $query);

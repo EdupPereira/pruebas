@@ -5,7 +5,7 @@ include ('includes/adminnav.php');
 include ('php/insertar_archivos.php');
 include ('php/editar_archivo.php');
 
-	$codigo='4';
+	$codigo = $_GET['codigo'];
 	include ('php/formulario.php'); 
 ?>
 
