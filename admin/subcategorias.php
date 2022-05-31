@@ -54,7 +54,8 @@ include ('includes/adminnav.php');
 			</script>';
 		}
 		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la subcategoría", "error");</script>';  
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la subcategoría porque esta ligada a algun archivo subido a la matriz debe eliminar primero los archivos asociados o no podra eliminarse", "error").then(function() {
+				window.location.replace("subcategorias.php");}); </script>';  
 		}
 	} 
 

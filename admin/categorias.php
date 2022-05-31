@@ -51,7 +51,8 @@ include ('includes/adminnav.php');
 			</script>';
 		}
 		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la categoría", "error");</script>';  
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la categoría porque esta ligada a alguna subcategoria  ¿Que puede hacer? debe eliminar primero las subcategorias asociadas o no se podra eliminar", "error").then(function() {
+				window.location.replace("categorias.php");}); </script>';    
 		}
 	} 
 
@@ -127,7 +128,7 @@ include ('includes/adminnav.php');
 									echo "<td>$codigo_categoriat</td>";
 									echo "<td>$descripcion_categoriat</td>";
 									echo "<td>
-									<a class='btn btn-sm btn-warning' href='#editCat' data-toggle='modal' data-codigo_categoriat='".$codigo_categoriat."' data-descripcion_categoriat='".$descripcion_categoriat."'><i class='fas fa-edit'></i></a>
+									<a class='btn  btn-warning' href='#editCat' data-toggle='modal' data-codigo_categoriat='".$codigo_categoriat."' data-descripcion_categoriat='".$descripcion_categoriat."'><i class='fas fa-edit'></i></a>
 									</td>";
 									echo '
 									<form action="" class="delcat"  method="POST" >
