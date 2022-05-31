@@ -180,9 +180,7 @@ if (pg_num_rows($run_query) > 0) {
 								echo "</tr>";
 							}
 						}
-						else {
-							echo "<tr><td class='text-center' colspan='8' >Actualmente no hay nada registrado. </td></tr>";
-						}
+						
 						?>
 
 					</tbody>
