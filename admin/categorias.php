@@ -155,7 +155,7 @@ include ('includes/adminnav.php');
 	</div> 
 </div><!-- DIV QUE CIERRA EL CONTENEDOR DEL NAV -->
 <!-- MODAL PARA EDITAR AREA-->
-<div class="modal fade" id="editArea" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
+<div class="modal fade" id="editCat" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
