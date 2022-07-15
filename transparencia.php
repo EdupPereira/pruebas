@@ -56,7 +56,7 @@
 
 								<button class="nav-link active btn" id="v-pills-n-tab" data-bs-toggle="pill" data-bs-target="#v-pills-n" type="button" role="tab" aria-controls="v-pills-n" aria-selected="true">Como navegar en este lugar</button>
 								<?php  
-								$subcategorias= "SELECT * FROM subcategoria_transparencia WHERE codigo_categoriat_fk= '{$filaca['codigo_categoriat']}' ORDER BY codigo_subcat ASC ";
+								$subcategorias= "SELECT * FROM subcategoria_transparencia WHERE codigo_categoriat_fk= '{$filaca['codigo_categoriat']}' ORDER BY indice_subcat ASC ";
 
 								$run_query_sub = pg_query($conn, $subcategorias);
 								if (pg_num_rows($run_query_sub) > 0) {
