@@ -4,7 +4,7 @@ include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
 
-if (isset($_POST['icategoria'])) {
+if (isset($_POST['icategorias'])) {
 	$codigo_categoriat=$_POST['codigo_categoriat'];
 	$descripcion_categoriat=$_POST['descripcion_categoriat'];
 
@@ -84,7 +84,7 @@ if(isset($_POST['elimina_cat'])) {
 
 									<div class="modal-footer col-lg-12 col-xs-12 col-md-12 col-sm-12">
 										<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-										<button type="submit" class="btn btn-success" name="icategoria">
+										<button type="submit" class="btn btn-success" name="icategorias">
 										Guardar</button>
 									</div>
 
