@@ -24,7 +24,7 @@
 			</center>
 			<?php  
 				//CONSULTA DEL MENU (CATEGORIAS)
-			$categorias= "SELECT * FROM categoria_transparencia";
+			$categorias= "SELECT * FROM categoria_transparencia ORDER BY codigo_categoriat ASC";
 			$run_query = pg_query($conn, $categorias);
 			if (pg_num_rows($run_query) > 0) {
 				while ($fila = pg_fetch_array($run_query)) {
