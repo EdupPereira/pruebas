@@ -229,12 +229,7 @@ $('#editCat').on('show.bs.modal', function (event) {
           var modal = $(this);
           modal.find('.modal-body #codigo_categoriat').val(codigo_categoriat);
           modal.find('.modal-body #descripcion_categoriat').val(descripcion_categoriat);
-          modal.find('.modal-body #puntaje_categoriat').val(puntaje_categoriat);
-          modal.find('.modal-body #peso_categoriat').val(peso_categoriat);
-          modal.find('.modal-body #dimension_categoriat').val(dimension_categoriat);
-          modal.find('.modal-body #puntaje_d_categoriat').val(puntaje_d_categoriat);
-          modal.find('.modal-body #peso_d_categoriat').val(peso_d_categoriat); 
-          modal.find('.modal-body #anio').val(anio);
+         
 
       });
 
