@@ -168,28 +168,7 @@ include ('includes/adminnav.php');
 				<form  action="" method="POST" class="form-inline">
 					<input type="text"  name="codigo_categoriat" class="form-control col-md-12" placeholder="Codigo Categoría" >
 					<input type="text"  name="descripcion_categoriat" class="form-control col-md-12" placeholder="Nombre Categoría" >
-					<br>
-					<input type="text" name="puntaje_categoriat" class="form-control col-md-6" placeholder="Puntaje Categoria">
-					<br>
-					<input type="text" name="peso_categoriat" class="form-control col-md-6" placeholder="Peso Categoria">
-					<br>
-					<select name="dimension_categoriat" class="form-control col-md-6">
-						<option value="Transparencia Activa">Transparencia Activa</option>
-						<option value="Transparencia Pasiva">Transparencia Pasiva</option>
-					</select>
-					<br>
-					<input type="text" name="puntaje_d_categoriat" class="form-control col-md-6" placeholder="Puntaje Dimensión">
-					<br>
-					<input type="text" name="peso_d_categoriat" class="form-control col-md-6" placeholder="Peso Dimensión">
-					<br>
-					<?php
-					$cont = date('Y');
-					?>
-					<select id="sel1" name="anio" class="form-control col-md-6">
-						<?php while ($cont >= 2016) { ?>
-							<option value="<?php echo($cont); ?>"><?php echo($cont); ?></option>
-							<?php $cont = ($cont-1); } ?>
-						</select>
+					
 						<br>
 						<div class="modal-footer col-lg-12 col-sm-12 col-md-12 col-xs-12">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
