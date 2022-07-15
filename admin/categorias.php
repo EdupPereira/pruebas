@@ -4,7 +4,7 @@ include('includes/adminheader.php');
 include ('includes/adminnav.php');
 
 
-if (isset($_POST['icategorias'])) {
+if (isset($_POST['icategoria'])) {
 	$codigo_categoriat=$_POST['codigo_categoriat'];
 	$descripcion_categoriat=$_POST['descripcion_categoriat'];
 
@@ -22,11 +22,11 @@ if (isset($_POST['icategorias'])) {
 }
 
 if(isset($_POST['editarCat'])) {
-
+$codigo_inicial = $_POST['codigo_categoriat_inicial'];
 	$codigo_cat_editar = $_POST['codigo_categoriat'];
-	$descripcion_editar = $_POST['nombre_area'];
+	$descripcion_editar = $_POST['descripcion_categoriat'];
 
-	$editarCat = "UPDATE categoria_transparencia SET codigo_categoriat = '$nombre_area_editar' WHERE codigo_categoriat = '$codigo_area_editar'";
+	$editarCat = "UPDATE categoria_transparencia SET codigo_categoriat = '{$codigo_cat_editar}',descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
 
 	$resultado = pg_query($editarCat);
 	if (pg_affected_rows($resultado) > 0 ) {
@@ -78,13 +78,14 @@ if(isset($_POST['elimina_cat'])) {
 							</div>
 							<div class="modal-body">
 								<form  action="" method="post" class="form-inline" >
+
 									<input type="text"  name="codigo_categoriat" class="form-control col-md-12" placeholder="Codigo Categoría" >
 									<input type="text"  name="descripcion_categoriat" class="form-control col-md-12" placeholder="Nombre Categoría" >
 
 
 									<div class="modal-footer col-lg-12 col-xs-12 col-md-12 col-sm-12">
 										<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-										<button type="submit" class="btn btn-success" name="icategorias">
+										<button type="submit" class="btn btn-success" name="icategoria">
 										Guardar</button>
 									</div>
 
@@ -166,6 +167,7 @@ if(isset($_POST['elimina_cat'])) {
 				</div>
 				<div class="modal-body">
 					<form  action="" method="POST" class="form-inline">
+						<input type="hidden"  name="codigo_categoriat_inicial" id="codigo_categoriat_inicial" class="form-control col-md-12" placeholder="Codigo Categoría" >
 						<input type="text"  name="codigo_categoriat" id="codigo_categoriat" class="form-control col-md-12" placeholder="Codigo Categoría" >
 						<input type="text"  name="descripcion_categoriat" id="descripcion_categoriat" class="form-control col-md-12" placeholder="Nombre Categoría" >
 
@@ -206,6 +208,7 @@ $('#editCat').on('show.bs.modal', function (event) {
           var descripcion_categoriat = button.data('descripcion_categoriat');
           //AGREGAR LOS DATOS CAPURADOS AL MODAL
           var modal = $(this);
+           modal.find('.modal-body #codigo_categoriat_inicial').val(codigo_categoriat);
           modal.find('.modal-body #codigo_categoriat').val(codigo_categoriat);
           modal.find('.modal-body #descripcion_categoriat').val(descripcion_categoriat);
         
