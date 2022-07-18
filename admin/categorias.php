@@ -8,42 +8,69 @@ if (isset($_POST['icategoria'])) {
 	$codigo_categoriat=$_POST['codigo_categoriat'];
 	$descripcion_categoriat=$_POST['descripcion_categoriat'];
 
+	$querycat = "SELECT * FROM categoria_transparencia WHERE codigo_categoriat='{$codigo_categoriat}' ";
+	$run_querysub = pg_query($conn, $querycat);
+	if (pg_num_rows($run_querysub) > 0) {
+		echo '<script>swal("ERROR!", "La Categoria ya existe", "error");</script>';
 
-	$query = "INSERT INTO categoria_transparencia(codigo_categoriat,descripcion_categoriat) VALUES ('$codigo_categoriat','$descripcion_categoriat')";
-	$result = pg_query($query);
-	if (pg_affected_rows($result) > 0) {
-		echo '<script>
-		swal("Buen Trabajo!", " La categoria se registro con éxito", "success");
-		</script>';
-	}
-	else {
-		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al registrar la categoría", "error");</script>';
+	}else{
+		$query = "INSERT INTO categoria_transparencia(codigo_categoriat,descripcion_categoriat) VALUES ('$codigo_categoriat','$descripcion_categoriat')";
+		$result = pg_query($query);
+		if (pg_affected_rows($result) > 0) {
+			echo '<script>
+			swal("Buen Trabajo!", " La categoria se registro con éxito", "success");
+			</script>';
+		}
+		else {
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al registrar la categoría", "error");</script>';
+		}
+
 	}
 }
 
 if(isset($_POST['editarCat'])) {
-$codigo_inicial = $_POST['codigo_categoriat_inicial'];
+	$codigo_inicial = $_POST['codigo_categoriat_inicial'];
 	$codigo_cat_editar = $_POST['codigo_categoriat'];
 	$descripcion_editar = $_POST['descripcion_categoriat'];
+	$querycat = "SELECT * FROM subcategoria_transparencia WHERE codigo_categoriat_fk='{$codigo_inicial}' ORDER BY codigo_subcat ASC";
+	$run_querysub = pg_query($conn, $querycat);
+	if (pg_num_rows($run_querysub) > 0) {
+		$editarCat = "UPDATE categoria_transparencia SET descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
 
-	$editarCat = "UPDATE categoria_transparencia SET codigo_categoriat = '{$codigo_cat_editar}',descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
+		$resultado = pg_query($editarCat);
+		if (pg_affected_rows($resultado) > 0 ) {
+			echo '
+			<script>
+			swal("Buen Trabajo!", "La descripcion de la Categoria se edito con éxito", "success");
+			</script>';
+		}
 
-	$resultado = pg_query($editarCat);
-	if (pg_affected_rows($resultado) > 0 ) {
-		echo '
-		<script>
-		swal("Buen Trabajo!", "El area se edito con éxito", "success");
-		</script>';
+		else {
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Categoria", "error");</script>';
+		}
+		echo '<script>swal("Atención!", "La Categoria ya tiene Subcategorias asignadas", "success");</script>';
+
+	}else{
+		$editarCat = "UPDATE categoria_transparencia SET codigo_categoriat = '{$codigo_cat_editar}',descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
+
+		$resultado = pg_query($editarCat);
+		if (pg_affected_rows($resultado) > 0 ) {
+			echo '
+			<script>
+			swal("Buen Trabajo!", "El area se edito con éxito", "success");
+			</script>';
+		}
+
+		else {
+			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Categoria", "error");</script>';
+		}
 	}
 
-	else {
-		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el area", "error");</script>';
-	}
 } 
 
 if(isset($_POST['elimina_cat'])) {
 	$codigo_cat =$_POST['elimina_cat'];
-	$del_query = "DELETE FROM categoria_transparencia WHERE codigo_categoriat='$codigo_cat'";
+	$del_query = "DELETE FROM categoria_transparencia WHERE codigo_categoriat='{$codigo_cat}'";
 	$run_del_query = pg_query($del_query);
 	if (pg_affected_rows($run_del_query) > 0) {
 		echo '<script>
@@ -51,11 +78,10 @@ if(isset($_POST['elimina_cat'])) {
 		</script>';
 	}
 	else {
-		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la categoría porque esta ligada a alguna subcategoria  ¿Que puede hacer? debe eliminar primero las subcategorias asociadas o no se podra eliminar", "error").then(function() {
-			window.location.replace("categorias.php");}); </script>';    
-		}
-	} 
-
+		echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la subcategoría porque esta ligada a algun archivo subido a la matriz debe eliminar primero los archivos asociados o no podra eliminarse", "error").then(function() {
+			window.location.replace("subcategorias.php");}); </script>'; 
+		} 
+	}
 	?>
 	<!-- Content Row -->
 	<div class="container-fluid">
@@ -208,10 +234,10 @@ $('#editCat').on('show.bs.modal', function (event) {
           var descripcion_categoriat = button.data('descripcion_categoriat');
           //AGREGAR LOS DATOS CAPURADOS AL MODAL
           var modal = $(this);
-           modal.find('.modal-body #codigo_categoriat_inicial').val(codigo_categoriat);
+          modal.find('.modal-body #codigo_categoriat_inicial').val(codigo_categoriat);
           modal.find('.modal-body #codigo_categoriat').val(codigo_categoriat);
           modal.find('.modal-body #descripcion_categoriat').val(descripcion_categoriat);
-        
+
 
       });
 
