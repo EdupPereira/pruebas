@@ -4,7 +4,7 @@
 		<thead>
 			<tr>
 				
-				<th>Nombre</th>
+				<th>Item</th>
 				<th>Descripción</th>
 				<th>Fecha</th>
 				<th>Año</th>
