@@ -18,9 +18,9 @@ if (isset($_POST['respuesta'])) {
 		$editar_detalle = "UPDATE pqrsd_detalle SET estado_llegada='{$nuevo_estado}', respuesta_detalle = '{$respuesta_detalle}' , comentario_detalle = '{$comentario_detalle}'  WHERE codigo_llegada = '{$codigo_llegada}'";
 		$run_pub_query = pg_query($conn, $editar_detalle);
 		if (pg_affected_rows($run_pub_query) > 0) {
-			echo "<script>swal('Post publicado satisfactoriamente');
+			echo "<script>swal(' publicado satisfactoriamente');
 			window.location.href='verpqrsd.php?r='".$codigo_llegada."'';</script>";
-			
+
 		}
 		else {
 			echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
