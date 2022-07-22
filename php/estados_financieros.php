@@ -15,7 +15,7 @@
 			<table id="" class="display table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
-						<th class="text-center">Nombre</th>
+						<th class="text-center">Item</th>
 						<th class="text-center">Descripción</th>
 						<th class="text-center">Fecha</th>
 						<th class="text-center">Archivo</th>
