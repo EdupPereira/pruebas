@@ -24,6 +24,7 @@ else if ($currentrole == 'superadmin') {
                         Todos los Usuarios
                     </center>
                 </h3>
+                <div class="table-responsive">
                 <table id="tabla_usuarios" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -34,6 +35,7 @@ else if ($currentrole == 'superadmin') {
                             <th>Correo</th>
                             <th>Rol</th>
                             <th>Area</th>
+                            <th>Constraseña</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
@@ -51,6 +53,7 @@ else if ($currentrole == 'superadmin') {
                                 $user_email = $row['email'];
                                 $user_role = $row['role'];
                                 $user_area = $row['area'];
+                                 //$user_pw = $row['password'];
 
                                 echo "<tr>";
                                 echo "<td>$user_id</td>";
@@ -60,6 +63,7 @@ else if ($currentrole == 'superadmin') {
                                 echo "<td>$user_email</td>";
                                 echo "<td>$user_role</td>";
                                 echo "<td>$user_area</td>";
+                                // echo "<td>$user_pw</td>";
                                 echo "<td>
                                 <a class='btn btn-warning' href='#edituser' data-toggle='modal' data-user_id='".$user_id."' data-user_firstname='".$user_firstname."' data-user_lastname='".$user_lastname."' data-user_email='".$user_email."' data-user_role='".$user_role."' data-user_area='".$user_area."' ><i  class='bi bi-pencil-square'></i></a>
 
@@ -71,7 +75,7 @@ else if ($currentrole == 'superadmin') {
 
                         </tbody>
                     </table>
-
+                </div>
                     <?php 
                 }
                 // ELIMINAR USUARIO
