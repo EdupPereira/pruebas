@@ -20,6 +20,7 @@ if (isset($_POST['respuesta'])) {
 		if (pg_affected_rows($run_pub_query) > 0) {
 			echo "<script>swal('Post publicado satisfactoriamente');
 			window.location.href='verpqrsd.php?r='".$codigo_llegada."'';</script>";
+			
 		}
 		else {
 			echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
@@ -61,7 +62,9 @@ if (isset($_POST['respuesta'])) {
 								<th>Nombres</th>
 								<th>Solicitud</th>
 								<th>Estado</th>
-								<th>Opciones</th>
+								<?php if($currentrole=="admin" || $currentrole=="superadmin"){ ?>
+									<th>Opciones</th>
+								<?php } ?>
 							</tr>
 						</thead>
 						<tbody>
@@ -85,32 +88,37 @@ if (isset($_POST['respuesta'])) {
 								<td>'.$identificacion_pqrsd.'</td>
 								<td>'.$nombres_pqrsd.'</td>
 								<td>'.$nombre_solicitud.'</td>
-								<td>'.$estado.'</td>
-								<td>';
-								if($estado=="Pendiente"){
+								<td>'.$estado.'</td>';
+								if($currentrole=="admin" || $currentrole=="superadmin"){ 
 									echo'
-									<center>
-									<a href="verpqrsd.php?r='.$codigo_llegada.'">
-									<button class="btn btn-success">Responder</button>
-									</center>
-									</a>
-									';
+									<td>';
+									if($estado=="Pendiente"){
+										echo'
+										<center>
+										<a href="verpqrsd.php?r='.$codigo_llegada.'">
+										<button class="btn btn-success">Responder</button>
+										</center>
+										</a>
+										';
 
-								}else{
+									}else{
+										echo'
+										<center>
+										<a href="verpqrsd.php?r='.$codigo_llegada.'">
+										<button class="btn btn-warning">Ver</button>
+										</a>
+										</center>
+										';
+									}
 									echo'
-									<center>
-									<a href="verpqrsd.php?r='.$codigo_llegada.'">
-									<button class="btn btn-warning">Ver</button>
-									</a>
-									</center>
+									</td>
 									';
 								}
-								echo'
-								</td>
-								</tr>
+								echo'</tr>
 
-								';
+									';
 							}
+
 							echo'
 							</tbody>
 							</table>
