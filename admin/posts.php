@@ -2,7 +2,11 @@
 ?>
 
 
-<?php include 'includes/adminnav.php';?>
+<?php include 'includes/adminnav.php';
+if (isset($_SESSION['role'])) {
+    $currentrole = $_SESSION['role'];
+}
+?>
 
 
 <div class="container-fluid">
@@ -36,18 +40,20 @@
                                         <th>Tags</th>
                                         <th>Fecha</th>
                                         <th>Ver Post</th>
-                                        <th>Editar</th>
-                                        <th>Borrar</th>
-                                        <th>Publicar</th>
+                                        <?php if($currentrole=="admin" || $currentrole=="superadmin"){ ?>
+                                            <th>Editar</th>
+                                            <th>Borrar</th>
+                                            <th>Publicar</th>
+                                        <?php } ?>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                   <?php
+                                 <?php
 
-                                   $query = "SELECT * FROM posts ORDER BY id DESC";
-                                   $run_query = pg_query($conn, $query);
-                                   if (pg_num_rows($run_query) > 0) {
+                                 $query = "SELECT * FROM posts ORDER BY id DESC";
+                                 $run_query = pg_query($conn, $query);
+                                 if (pg_num_rows($run_query) > 0) {
                                     while ($row = pg_fetch_array($run_query)) {
                                         $post_id = $row['id'];
                                         $post_title = $row['title'];
@@ -67,10 +73,11 @@
                                         echo "<td>$post_tags</td>";
                                         echo "<td>$post_date</td>";
                                         echo "<td><a href='post.php?post=$post_id' style='color:green'>Ver Post</a></td>";
-                                        echo "<td><a class='btn btn-warning' href='editposts.php?id=$post_id'><span class='far fa-edit' style='color: #265a88;'></span></a></td>";
-                                        echo "<td><a class='btn btn-danger' onClick=\"javascript: return confirm('¿Estás seguro de que deseas eliminar esta publicación?')\" href='?del=$post_id'><i class='fa fa-trash-alt'></i></a></td>";
-                                        echo "<td><a class='btn btn-info' onClick=\"javascript: return confirm('¿Estás seguro de que deseas publicar esta publicación?')\"href='?pub=$post_id'>Publicar</a></td>";
-
+                                        if($currentrole=="admin" || $currentrole=="superadmin"){ 
+                                            echo "<td><a class='btn btn-warning' href='editposts.php?id=$post_id'><span class='far fa-edit' style='color: #265a88;'></span></a></td>";
+                                            echo "<td><a class='btn btn-danger' onClick=\"javascript: return confirm('¿Estás seguro de que deseas eliminar esta publicación?')\" href='?del=$post_id'><i class='fa fa-trash-alt'></i></a></td>";
+                                            echo "<td><a class='btn btn-info' onClick=\"javascript: return confirm('¿Estás seguro de que deseas publicar esta publicación?')\"href='?pub=$post_id'>Publicar</a></td>";
+                                        }
                                         echo "</tr>";
 
                                     }
@@ -99,10 +106,10 @@
                 window.location.href='posts.php';</script>";
             }
             else {
-               echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
-           }
-       }
-       if (isset($_GET['pub'])) {
+             echo "<script>swal('Ocurrió un error. Intente nuevamente!');</script>";   
+         }
+     }
+     if (isset($_GET['pub'])) {
         $post_pub = pg_escape_string($conn,$_GET['pub']);
         $pub_query = "UPDATE posts SET status='Publicado' WHERE id='$post_pub'";
         $run_pub_query = pg_query($conn, $pub_query);
@@ -111,10 +118,10 @@
             window.location.href='posts.php';</script>";
         }
         else {
-           echo "<script>swal('Ocurrió un error. Intente nuevamente');</script>";   
-       }
-   }
-   ?>
+         echo "<script>swal('Ocurrió un error. Intente nuevamente');</script>";   
+     }
+ }
+ ?>
 </div>
 </div>
 </div>
