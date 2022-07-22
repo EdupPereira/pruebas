@@ -27,15 +27,15 @@ if (isset($_POST['icategoria'])) {
 
 	}
 }
-
+//EDITAR CATEGORIAS
 if(isset($_POST['editarCat'])) {
 	$codigo_inicial = $_POST['codigo_categoriat_inicial'];
 	$codigo_cat_editar = $_POST['codigo_categoriat'];
 	$descripcion_editar = $_POST['descripcion_categoriat'];
-	$querycat = "SELECT * FROM subcategoria_transparencia WHERE codigo_categoriat_fk='{$codigo_inicial}' ORDER BY codigo_subcat ASC";
-	$run_querysub = pg_query($conn, $querycat);
-	if (pg_num_rows($run_querysub) > 0) {
-		$editarCat = "UPDATE categoria_transparencia SET descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
+
+	//SI EL CODIGO INICIAL Y EL CODIGO A EDITAR SON IGUALES SOLO CAMBIAR LA DESCRIPCION
+	if($codigo_inicial==$codigo_cat_editar){
+		$editarCat = "UPDATE categoria_transparencia SET  descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
 
 		$resultado = pg_query($editarCat);
 		if (pg_affected_rows($resultado) > 0 ) {
@@ -48,23 +48,49 @@ if(isset($_POST['editarCat'])) {
 		else {
 			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Categoria", "error");</script>';
 		}
-		echo '<script>swal("Atención!", "La Categoria ya tiene Subcategorias asignadas", "success");</script>';
 
 	}else{
-		$editarCat = "UPDATE categoria_transparencia SET codigo_categoriat = '{$codigo_cat_editar}',descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
+		$querycat = "SELECT * FROM subcategoria_transparencia WHERE codigo_categoriat_fk='{$codigo_inicial}' ";
+		$run_querysub = pg_query($conn, $querycat);
+		if (pg_num_rows($run_querysub) > 0) {
+		//EDITAR
+			while ($rows = pg_fetch_array($run_querysub)) {
+				$codigo_subcat = $rows['codigo_subcat'];
+				$codigo_categoriat_fk = $rows['codigo_categoriat_fk'];
+				
 
-		$resultado = pg_query($editarCat);
-		if (pg_affected_rows($resultado) > 0 ) {
-			echo '
-			<script>
-			swal("Buen Trabajo!", "El area se edito con éxito", "success");
-			</script>';
-		}
+				$query = "INSERT INTO categoria_transparencia(codigo_categoriat,descripcion_categoriat) VALUES ('$codigo_cat_editar','$descripcion_editar')";
+				$result = pg_query($query);
+				if (pg_affected_rows($result) > 0) {
+					$editarRol = "UPDATE subcategoria_transparencia SET codigo_categoriat_fk = '$codigo_cat_editar' WHERE codigo_categoriat_fk = '$codigo_inicial'";
 
-		else {
-			echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al editar el Categoria", "error");</script>';
-		}
-	}
+					$resultado = pg_query($editarRol);
+					if (pg_affected_rows($resultado) > 0 ) {
+						$editarCat = "UPDATE categoria_transparencia SET codigo_categoriat='$codigo_cat_editar', descripcion_categoriat='{$descripcion_editar}' WHERE codigo_categoriat = '{$codigo_inicial}'";
+
+						
+						$del_query = "DELETE FROM categoria_transparencia WHERE codigo_categoriat='{$codigo_inicial}'";
+						$run_del_query = pg_query($del_query);
+						if (pg_affected_rows($run_del_query) > 0) {
+							echo '<script>
+							swal("Buen Trabajo!", "La categoría se edito con éxito, para todas las Subcategorias", "success");
+							</script>';
+						}
+						else {
+							echo '<script>swal("ERROR!", "Lo sentimos ocurrió un error al eliminar la subcategoría porque esta ligada a algun archivo subido a la matriz debe eliminar primero los archivos asociados o no podra eliminarse", "error").then(function() {
+								window.location.replace("subcategorias.php");}); </script>'; 
+							}
+
+						}
+					}
+
+
+
+		} //CIERRA CICLO
+		
+	} //CIERRA IF
+}
+
 
 } 
 
