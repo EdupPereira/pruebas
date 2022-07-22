@@ -56,7 +56,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Transparencia") {
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "admin" && $_SESSION['area']=="Transparencia") {
             echo'
             <!-- Menu para administrar Ley Transparencia-->
             <li class="nav-item">
@@ -84,7 +84,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Comunicaciones" ) {
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Comunicaciones" || $_SESSION['role'] == "admin" && $_SESSION['area']=="Comunicaciones" ) {
             echo ' 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -111,7 +111,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="PQRSFD" ) {
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="PQRSFD" || $_SESSION['role'] == "admin" && $_SESSION['area']=="PQRSFD"  ) {
             echo '
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -170,7 +170,7 @@
         }
         ?>
         <?php 
-        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Transparencia") { 
+        if ($_SESSION['role'] == "superadmin" && $_SESSION['area']=="superadmin" || $_SESSION['role'] == "user" && $_SESSION['area']=="Transparencia" || $_SESSION['role'] == "admin" && $_SESSION['area']=="Transparencia") { 
 
     
                 //CONSULTA DEL MENU (CATEGORIAS)
