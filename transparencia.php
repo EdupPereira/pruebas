@@ -20,7 +20,7 @@
 		</div>
 		<div class="col-md-2 nav flex-column nav-pills card" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 			<center>
-				<B>Categorias</B>
+				<B>Menú Nivel I</B>
 			</center>
 			<?php  
 				//CONSULTA DEL MENU (CATEGORIAS)
